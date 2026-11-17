@@ -11,12 +11,13 @@
 <!--#include header-->
 <main id="main">
 
+<section class="phero dark phero-text"><div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="{{P}}index.html">Головна</a><span>/</span>Контакти</nav>
+    <h1>Запис і зв'язок</h1>
+    <p class="lead">Напишіть у месенджер, зателефонуйте або залиште заявку. Відповідаємо у зручному для вас каналі.</p>
+</div></section>
 <section class="section" style="padding-bottom:40px">
   <div class="wrap">
-    <div class="eyebrow"><b>·</b> Контакти</div>
-    <h1 style="font-size:var(--fs-hero)">Запис і зв'язок</h1>
-    <p class="lead">Напишіть у месенджер, зателефонуйте або залиште заявку. Відповідаємо у зручному для вас каналі.</p>
-
     <div class="ccards">
       <a class="ccard" data-contact="telegram" href="#" hidden><svg viewBox="0 0 24 24"><path d="M21.5 3.5 2.8 10.7c-.9.4-.9 1.1-.2 1.3l4.8 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8l3.1-14.8c.3-1.2-.5-1.8-1.5-1.5Z" fill="currentColor"/></svg><span><small>Месенджер</small>Telegram</span></a>
       <a class="ccard" data-contact="whatsapp" href="#" hidden><svg viewBox="0 0 24 24"><path d="M3 21l1.6-4.8A9 9 0 1 1 8 19.5Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1-1.5-2-1-1 .8c-1-.4-2-1.4-2.4-2.4l.8-1-1-2Z" fill="currentColor"/></svg><span><small>Месенджер</small>WhatsApp</span></a>
@@ -45,31 +46,7 @@
   </div>
 </section>
 
-<section class="section" id="review">
-  <div class="wrap" style="max-width:760px">
-    <div class="eyebrow"><b>·</b> Відгук</div>
-    <h2>Поділіться враженням</h2>
-    <p class="lead">Відгук з'явиться на сайті після перевірки. Ми публікуємо лише ім'я та місто, без контактів.</p>
-    <form class="book" data-review novalidate style="margin-top:40px">
-      <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" class="hp">
-      <div class="field"><label for="rv-name">Ім'я</label><input id="rv-name" name="name" autocomplete="given-name" required></div>
-      <div class="field"><label for="rv-city">Місто (необов'язково)</label><input id="rv-city" name="city" autocomplete="address-level2"></div>
-      <div class="field"><span class="lbl" style="font-size:var(--fs-small);letter-spacing:.1em;text-transform:uppercase;color:var(--fg-soft)">Оцінка</span>
-        <div class="rating" role="radiogroup" aria-label="Оцінка">
-          <input type="radio" name="rating" id="r5" value="5" checked><label for="r5" title="5">★</label>
-          <input type="radio" name="rating" id="r4" value="4"><label for="r4" title="4">★</label>
-          <input type="radio" name="rating" id="r3" value="3"><label for="r3" title="3">★</label>
-          <input type="radio" name="rating" id="r2" value="2"><label for="r2" title="2">★</label>
-          <input type="radio" name="rating" id="r1" value="1"><label for="r1" title="1">★</label>
-        </div></div>
-      <div class="field"><label for="rv-text">Ваш відгук</label><textarea id="rv-text" name="text" rows="5" required minlength="10"></textarea></div>
-      <label class="consent"><input type="checkbox" name="consent" required> <span>Погоджуюся на публікацію відгуку на сайті та на обробку даних згідно з <a class="link" href="{{P}}privacy.html">політикою конфіденційності</a></span></label>
-      <p class="form-err" data-err role="alert" hidden>Вкажіть ім'я, напишіть відгук (від 10 символів) і підтвердьте згоду.</p>
-      <button class="btn btn-primary" type="submit">Надіслати відгук</button>
-      <p class="ok" data-ok role="status" hidden></p>
-    </form>
-  </div>
-</section>
+
 
 </main>
 <!--#include footer-->

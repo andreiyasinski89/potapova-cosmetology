@@ -20,21 +20,29 @@ if os.path.exists('i18n/ru.extra.json'):
 norm = lambda s: ' '.join(s.split())
 RU = {norm(k): v for k, v in RU.items()}
 
-PAGES = []
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from pages import gen_pages, gen_partials
+from static_pages import gen_static          # сторінки послуг, каталог, ціни (tools/content.py)
+
+SOURCES = {}
 for dp, _, fs in os.walk(SRC):
-    if 'partials' in dp.replace('\\', '/').split('/'):
+    if 'partials' in dp.replace(os.sep, '/').split('/'):
         continue
     for f in fs:
         if f.endswith('.html'):
-            PAGES.append(os.path.relpath(os.path.join(dp, f), SRC).replace('\\', '/'))
-PAGES.sort()
+            rel = os.path.relpath(os.path.join(dp, f), SRC).replace(os.sep, '/')
+            SOURCES[rel] = open(os.path.join(dp, f), encoding='utf-8').read()
+SOURCES.update(gen_pages())
+SOURCES.update(gen_static())
+GEN_PARTIALS = gen_partials()
+PAGES = sorted(SOURCES)
 NOINDEX = {'404.html'}
 
 # ---------- включення ----------
 def include(html, depth=0):
     def rep(m):
         name, args = m.group(1), m.group(2) or ''
-        part = open(f'{SRC}/partials/{name}.html', encoding='utf-8').read()
+        part = GEN_PARTIALS[name] if name in GEN_PARTIALS else open(f'{SRC}/partials/{name}.html', encoding='utf-8').read()
         for k, v in re.findall(r'(\w+)=(\S+)', args):
             part = part.replace('{{' + k + '}}', v)
         return include(part, depth + 1)
@@ -57,7 +65,7 @@ def lang_blocks(html, keep):
     drop = 'ru' if keep == 'uk' else 'uk'
     for lang, action in ((drop, 'remove'), (keep, 'unwrap')):
         while True:
-            m = re.search(rf'<(div|span) class="l-{lang}">', html)
+            m = re.search(rf'<(div|span) class=["\x27]l-{lang}["\x27]>', html)
             if not m:
                 break
             cs, ce = find_close(html, m.start(), m.group(1))
@@ -137,8 +145,7 @@ def translate_html(html, page):
 
 # ---------- збірка ----------
 def build_page(rel, lang):
-    html = open(f'{SRC}/{rel}', encoding='utf-8').read()
-    html = include(html)
+    html = include(SOURCES[rel])
     html = re.sub(r'<!--(?!#).*?-->', '', html, flags=re.S)
     KEEP.clear()
     html = lang_blocks(html, lang)
