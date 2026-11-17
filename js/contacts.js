@@ -46,7 +46,7 @@
     var t = a.getAttribute('data-contact-text');
     if (t === 'phone') a.textContent = C.phone;
     else if (t === 'email') a.textContent = C.email;
-    else if (t === 'address') a.textContent = C.address || '';
+    else if (t === 'address') a.textContent = (LANG === 'ru' && C.addressRu) || C.address || '';
   });
   document.querySelectorAll('[data-contact-fallback]').forEach(function (el) { if (configured.map) el.hidden = true; });
   var any = Object.keys(configured).some(function (k) { return k !== 'map'; });
