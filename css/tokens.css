@@ -1,0 +1,55 @@
+/* Potapova Cosmetology — дизайн-токени (єдине джерело правди) */
+:root {
+  /* Палітра. Підтвердити по справжньому логотипу та інтер'єру */
+  --ivory: #F2F5F2;
+  --graphite: #0B2224;
+  --bordeaux: #0F4F54;
+  --sand: #B7CCC8;
+  --champagne: #6FA8A1;
+  --ink-soft: #3f5254;      /* вторинний текст на ivory, контраст ≥ 7:1 */
+  --ivory-soft: #bfd0cd;    /* вторинний текст на graphite */
+
+  /* Семантика (за замовчуванням — «Ivory Atelier») */
+  --bg: var(--ivory);
+  --fg: var(--graphite);
+  --fg-soft: var(--ink-soft);
+  --surface: #E3EBE8;
+  --line: rgba(11,34,36,.16);
+  --accent: var(--bordeaux);
+  --accent-fg: #fff;
+
+  /* Типографіка */
+  --font-serif: "Cormorant Garamond", "Playfair Display", Georgia, serif;
+  --font-sans: "Onest", "Inter", system-ui, sans-serif;
+  --fs-hero: clamp(2.8rem, 1.2rem + 7vw, 7rem);
+  --fs-h2: clamp(2rem, 1.2rem + 3.2vw, 4rem);
+  --fs-h3: clamp(1.35rem, 1.1rem + 1vw, 1.9rem);
+  --fs-body: clamp(1rem, .96rem + .2vw, 1.125rem);
+  --fs-small: .8125rem;
+  --lh-text: 1.6;
+
+  /* Відступи / сітка */
+  --gutter: clamp(16px, 4vw, 56px);
+  --section-y: clamp(80px, 12vw, 160px);
+  --maxw: 1440px;
+  --radius: 2px;
+  --radius-lg: 6px;
+  --shadow: 0 24px 60px -30px rgba(11,34,36,.35);
+
+  /* Рух */
+  --ease: cubic-bezier(.22,.61,.36,1);
+  --dur: 750ms;
+  --header-h: 76px;
+  --topbar-h: 34px;
+}
+
+/* Напрямок B — «Noir Clinic» */
+[data-theme="noir"] {
+  --bg: var(--graphite);
+  --fg: var(--ivory);
+  --fg-soft: var(--ivory-soft);
+  --surface: #10302f;
+  --line: rgba(242,245,242,.18);
+  --accent: #1B7A7E;        /* світліший бордо для контрасту на графіті */
+  --accent-fg: #fff;
+}
