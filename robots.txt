@@ -1,3 +1,4 @@
 User-agent: *
-Disallow: /
-# Домен не вказано в site.json: сайт закрито від індексації до запуску. Після збірки з доменом файл оновиться.
+Allow: /
+
+Sitemap: https://potapova.shop/sitemap.xml
