@@ -8,6 +8,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Onest:wght@300;400;500&subset=cyrillic&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/tokens.css">
 <link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/media.css">
+<link rel="icon" type="image/png" href="assets/favicon.png">
 <style>
 .art{max-width:760px;margin:0 auto;padding:72px 0;border-top:1px solid var(--line)}
 .art h2{font-size:var(--fs-h2);margin:12px 0 28px}
@@ -24,7 +26,7 @@ html:not([lang="ru"]) .l-ru{display:none}
 <body>
 <a class="skip" href="#main"><span class="l-uk">Перейти до змісту</span><span class="l-ru">Перейти к содержимому</span></a>
 <header class="site"><div class="wrap">
-  <a class="logo" href="index.html">Potapova<small>Cosmetology</small></a>
+  <a class="logo" href="index.html"><img class="bear" src="assets/img/bear.webp" alt="" width="62" height="34"><span>Potapova<small>Cosmetology</small></span></a>
   <span style="display:flex;gap:14px;font-size:.85rem"><a href="#" data-lang="uk">УКР</a><a href="#" data-lang="ru">РУС</a></span>
   <a class="btn btn-primary" href="index.html#zapys" style="min-height:42px;padding:0 20px"><span class="l-uk">Записатися</span><span class="l-ru">Записаться</span></a>
 </div></header>
@@ -39,6 +41,7 @@ html:not([lang="ru"]) .l-ru{display:none}
     <div class="tagl"><span class="l-uk">Догляд</span><span class="l-ru">Уход</span></div>
 
     <div class="l-uk">
+      <img class="art-img" src="assets/img/dmk.webp" alt="Ферментні маски DMK" width="1000" height="1500" loading="lazy">
       <h2>Ферментотерапія DMK: чому це не просто маска</h2>
       <p>Коли пацієнтка бачить слово «маска», вона уявляє тридцять хвилин із закритими очима, трохи прохолоди і гарне відчуття після. З ферментотерапією DMK трохи інакше, і саме тому ми її любимо.</p>
       <h3>Що це взагалі</h3>
@@ -92,6 +95,7 @@ html:not([lang="ru"]) .l-ru{display:none}
     <div class="tagl"><span class="l-uk">Технології</span><span class="l-ru">Технологии</span></div>
 
     <div class="l-uk">
+      <img class="art-img" src="assets/img/shelf-hydraderm.webp" alt="Косметика Hydraderm" width="1000" height="1500" loading="lazy">
       <h2>Мікроструми Hydraderm: чотири ефекти за одну процедуру</h2>
       <p>Є процедури, після яких обличчя «ніби відпочило». Без червоного носа, без «ходити тиждень у кепці». Мікрострумова терапія саме з таких.</p>
       <h3>Як це працює, простими словами</h3>
@@ -208,6 +212,7 @@ html:not([lang="ru"]) .l-ru{display:none}
     <div class="tagl"><span class="l-uk">Масаж</span><span class="l-ru">Массаж</span></div>
 
     <div class="l-uk">
+      <div class="vids"><video data-lazy muted loop playsinline preload="none" poster="assets/video/massage-2.webp" aria-label="Масаж спини"><source src="assets/video/massage-2.mp4" type="video/mp4"></video><video data-lazy muted loop playsinline preload="none" poster="assets/video/massage-1.webp" aria-label="Масаж тіла"><source src="assets/video/massage-1.mp4" type="video/mp4"></video></div>
       <h2>Час для релаксу: масаж обличчя, голови та стоп</h2>
       <p>Косметологія — не лише про апарати та уколи. Іноді найкраще, що можна зробити для шкіри, це дати їй і собі годину без напруги.</p>
       <h3>Масаж обличчя, шиї, декольте</h3>
@@ -305,7 +310,7 @@ html:not([lang="ru"]) .l-ru{display:none}
     </div>
   </article>
 </div></main>
-<footer><div class="wrap"><p class="legal" style="margin:0"><span class="l-uk">Інформація на сайті не є медичною порадою. Існують протипоказання, необхідна консультація спеціаліста. Результат індивідуальний. © Potapova Cosmetology.</span><span class="l-ru">Информация на сайте не является медицинским советом. Существуют противопоказания, необходима консультация специалиста. Результат индивидуален. © Potapova Cosmetology.</span></p></div></footer>
+<footer><div class="wrap"><img class="flogo" src="assets/img/logo-white.png" alt="Potapova Cosmetology" width="800" height="334" loading="lazy" style="margin-bottom:32px"><p class="legal" style="margin:0"><span class="l-uk">Інформація на сайті не є медичною порадою. Існують протипоказання, необхідна консультація спеціаліста. Результат індивідуальний. © Potapova Cosmetology.</span><span class="l-ru">Информация на сайте не является медицинским советом. Существуют противопоказания, необходима консультация специалиста. Результат индивидуален. © Potapova Cosmetology.</span></p></div></footer>
 <script src="js/main.js"></script>
 <script src="js/i18n.js"></script>
 </body>

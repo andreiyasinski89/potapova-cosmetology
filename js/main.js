@@ -67,4 +67,15 @@
       safe(() => localStorage.setItem('pc-cookie', b.dataset.v)); ck.style.display = 'none';
     }));
   }
+
+  // Відео: hero зупиняється при reduced-motion, решта грає лише у видимій зоні
+  const vids = document.querySelectorAll('video');
+  if (reduce) vids.forEach(v => { v.removeAttribute('autoplay'); v.pause(); v.preload = 'none'; });
+  else if ('IntersectionObserver' in window) {
+    const vo = new IntersectionObserver((es) => es.forEach(e => {
+      const v = e.target; if (v.dataset.lazy === undefined) return;
+      if (e.isIntersecting) { v.play().catch(() => {}); } else { v.pause(); }
+    }), { threshold: .35 });
+    vids.forEach(v => vo.observe(v));
+  }
 })();

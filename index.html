@@ -16,6 +16,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Onest:wght@300;400;500&subset=cyrillic&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/tokens.css">
 <link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/media.css">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<meta property="og:image" content="https://[ДОМЕН]/assets/img/og.jpg">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"MedicalBusiness","name":"Potapova Cosmetology","description":"Косметологія та ін'єкційна естетика в Одесі","address":{"@type":"PostalAddress","addressLocality":"Одеса","addressCountry":"UA","streetAddress":"вул. Академіка Філатова, 2А, ЖК «Манхеттен»"},"telephone":"[ЗАПОВНИТИ]","sameAs":["https://www.instagram.com/potapova.cosmetology"],"employee":{"@type":"Physician","name":"Анастасія Потапова"}}
 </script>
@@ -40,7 +43,7 @@
 </div></div>
 
 <header class="site"><div class="wrap">
-  <a class="logo" href="/" aria-label="Potapova Cosmetology, на головну">Potapova<small>Cosmetology</small></a>
+  <a class="logo" href="/" aria-label="Potapova Cosmetology, на головну"><img class="bear" src="assets/img/bear.webp" alt="" width="62" height="34"><span>Potapova<small>Cosmetology</small></span></a>
   <ul class="nav" id="nav">
     <li class="has-mega"><a href="poslugy/gubi.html" aria-haspopup="true">Послуги</a>
       <div class="mega"><div class="wrap">
@@ -64,7 +67,7 @@
 <main id="main">
 <!-- 1. HERO -->
 <section class="hero" aria-label="Вступ">
-  <div class="hero-media ph" role="img" aria-label="Інтер'єр кабінету, відео-фон"></div>
+  <video class="hero-media" autoplay muted loop playsinline preload="auto" poster="assets/video/hero.webp" aria-hidden="true"><source src="assets/video/hero.mp4" type="video/mp4"></video>
   <div class="wrap">
     <h1 class="rv">Не змінюємо. <em>Підкреслюємо.</em></h1>
     <p class="sub rv" style="--i:1">Косметологія та ін'єкційна естетика в Одесі</p>
@@ -100,13 +103,13 @@
   <div class="wrap">
     <div class="head"><div><div class="eyebrow"><b>02</b> Послуги</div><h2>Що ми робимо</h2></div><a class="link" href="poslugy/gubi.html">Усі послуги</a></div>
     <div class="grid3">
-      <a class="card rv" href="#"><div class="frame"><div class="ph" data-label="[ФОТО] чистка"></div></div><h3>Чистки обличчя</h3><div class="meta"><span>від <span class="fill">[ЦІНА]</span> ₴</span><i>→</i></div></a>
+      <a class="card rv" href="#"><div class="frame"><img class="ph-img" src="assets/img/dmk-cleanser.webp" alt="Очищення DMK" width="900" height="1200" loading="lazy" decoding="async"></div><h3>Чистки обличчя</h3><div class="meta"><span>від <span class="fill">[ЦІНА]</span> ₴</span><i>→</i></div></a>
       <a class="card rv" style="--i:1" href="poslugy/gubi.html"><div class="frame"><div class="ph" data-label="[ФОТО] губи"></div></div><h3>М'яка корекція губ</h3><div class="meta"><span>від <span class="fill">[ЦІНА]</span> ₴</span><i>→</i></div></a>
       <a class="card rv" style="--i:2" href="#"><div class="frame"><div class="ph" data-label="[ФОТО] лазер"></div></div><h3>Лазер без болю</h3><div class="meta"><span>від <span class="fill">[ЦІНА]</span> ₴</span><i>→</i></div></a>
       <a class="card rv" href="#"><div class="frame"><div class="ph" data-label="[ФОТО] RF / IPL"></div></div><h3>RF та IPL</h3><div class="meta"><span>від <span class="fill">[ЦІНА]</span> ₴</span><i>→</i></div></a>
-      <a class="card rv" style="--i:1" href="#"><div class="frame"><div class="ph" data-label="[ФОТО] мікроструми"></div></div><h3>Мікрострумова терапія Hydraderm</h3><div class="meta"><span>від <span class="fill">[ЦІНА]</span> ₴</span><i>→</i></div></a>
-      <a class="card rv" style="--i:2" href="#"><div class="frame"><div class="ph" data-label="[ФОТО] DMK"></div></div><h3>Ферментотерапія DMK</h3><div class="meta"><span>від <span class="fill">[ЦІНА]</span> ₴</span><i>→</i></div></a>
-      <a class="card rv" href="#masazh"><div class="frame"><div class="ph" data-label="[ФОТО] масаж"></div></div><h3>Масаж обличчя та тіла</h3><div class="meta"><span>від 500 ₴</span><i>→</i></div></a>
+      <a class="card rv" style="--i:1" href="#"><div class="frame"><img class="ph-img" src="assets/img/shelf-hydraderm.webp" alt="Косметика Hydraderm" width="1000" height="1500" loading="lazy" decoding="async"></div><h3>Мікрострумова терапія Hydraderm</h3><div class="meta"><span>від <span class="fill">[ЦІНА]</span> ₴</span><i>→</i></div></a>
+      <a class="card rv" style="--i:2" href="#"><div class="frame"><img class="ph-img" src="assets/img/dmk.webp" alt="Ферментні маски DMK" width="1000" height="1500" loading="lazy" decoding="async"></div><h3>Ферментотерапія DMK</h3><div class="meta"><span>від <span class="fill">[ЦІНА]</span> ₴</span><i>→</i></div></a>
+      <a class="card rv" href="#masazh"><div class="frame"><img class="ph-img" src="assets/video/massage-2.webp" alt="Масаж" width="720" height="1280" loading="lazy" decoding="async"></div><h3>Масаж обличчя та тіла</h3><div class="meta"><span>від 500 ₴</span><i>→</i></div></a>
       <a class="card rv" style="--i:1" href="#"><div class="frame"><div class="ph" data-label="[ФОТО] епіляція"></div></div><h3>Епіляція</h3><div class="meta"><span>від <span class="fill">[ЦІНА]</span> ₴</span><i>→</i></div></a>
       <a class="card rv" style="--i:2" href="#"><div class="frame"><div class="ph" data-label="[ФОТО] загар"></div></div><h3>Тростинний засмаг</h3><div class="meta"><span>від <span class="fill">[ЦІНА]</span> ₴</span><i>→</i></div></a>
     </div>
@@ -120,6 +123,10 @@
         <details><summary>Масаж голови <span>20 хв — 500 ₴</span></summary><p>Час для релаксу, відновлення та турботи про себе.</p></details>
         <details><summary>Масаж стоп <span>20 хв — 500 ₴</span></summary><p>20 хвилин повного розслаблення та легкості. Допомагає зняти втому, напруження та покращує кровообіг.</p></details>
       </div>
+      <div class="vids">
+        <video data-lazy muted loop playsinline preload="none" poster="assets/video/massage-2.webp" aria-label="Масаж спини"><source src="assets/video/massage-2.mp4" type="video/mp4"></video>
+        <video data-lazy muted loop playsinline preload="none" poster="assets/video/massage-1.webp" aria-label="Масаж тіла"><source src="assets/video/massage-1.mp4" type="video/mp4"></video>
+      </div>
     </div>
   </div>
 </section>
@@ -127,7 +134,7 @@
 <!-- 5. ЛІКАР -->
 <section class="section sand" id="likar">
   <div class="wrap split">
-    <div class="ph light rv" data-label="[ФОТО] портрет лікаря" role="img" aria-label="Портрет Анастасії Потапової"></div>
+    <img class="rv" src="assets/img/doctor.webp" alt="Портрет у кабінеті Potapova Cosmetology" width="1200" height="1800" loading="lazy" decoding="async">
     <div class="rv" style="--i:1">
       <div class="eyebrow"><b>03</b> Лікар</div>
       <h2>Анастасія Потапова</h2>
@@ -163,10 +170,10 @@
     <div class="eyebrow"><b>05</b> Світ Potapova</div>
     <h2 style="margin-bottom:56px">Підхід, який відчувається</h2>
     <div class="grid4">
-      <a class="tile rv" href="#"><div class="ph" data-label="[ФОТО]"></div><h3>Філософія</h3><p>Підкреслюємо, а не змінюємо.</p></a>
-      <a class="tile rv" style="--i:1" href="#tekhnolohii"><div class="ph" data-label="[ФОТО]"></div><h3>Технології клініки</h3><p>Апарати, які працюють м'яко.</p></a>
-      <a class="tile rv" style="--i:2" href="#"><div class="ph" data-label="[ФОТО]"></div><h3>Безпека і стерильність</h3><p>Одноразові розхідники, оригінальні препарати.</p></a>
-      <a class="tile rv" style="--i:3" href="#tekhnolohii"><div class="ph" data-label="[ФОТО]"></div><h3>Бренди-партнери</h3><p>Лише перевірені виробники.</p></a>
+      <a class="tile rv" href="#"><img class="ph" src="assets/img/decor.webp" alt="" width="1000" height="1500" loading="lazy" decoding="async"><h3>Філософія</h3><p>Підкреслюємо, а не змінюємо.</p></a>
+      <a class="tile rv" style="--i:1" href="#tekhnolohii"><img class="ph" src="assets/img/shelf-back.webp" alt="" width="1000" height="1500" loading="lazy" decoding="async"><h3>Технології клініки</h3><p>Апарати, які працюють м'яко.</p></a>
+      <a class="tile rv" style="--i:2" href="#"><img class="ph" src="assets/img/originals.webp" alt="" width="1000" height="1500" loading="lazy" decoding="async"><h3>Безпека і стерильність</h3><p>Одноразові розхідники, оригінальні препарати.</p></a>
+      <a class="tile rv" style="--i:3" href="#tekhnolohii"><img class="ph" src="assets/img/image-peel.webp" alt="" width="900" height="1200" loading="lazy" decoding="async"><h3>Бренди-партнери</h3><p>Лише перевірені виробники.</p></a>
     </div>
   </div>
 </section>
@@ -176,10 +183,25 @@
   <div class="wrap">
     <div class="eyebrow"><b>06</b> Технології та бренди</div>
     <h2>Апарати та препарати</h2>
-    <div class="brands" aria-label="Бренди-партнери (перевірити перед публікацією)">
-      <span>STYX</span><span>MANTIS</span><span>DMK</span><span>Hydraderm</span><span class="fill">[ІНШІ]</span>
+    <div class="brands" aria-label="Бренди-партнери"><span>DMK</span><span>IMAGE Skincare</span><span>ZO Skin Health</span><span>Rejuran</span><span>Thalgo</span><span>Guinot</span><span>Hydraderm</span></div>
+    <div class="brandgrid">
+      <figure class="rv"><img src="assets/img/dmk-cleanser.webp" alt="DMK MD Enbioment Cleanser" width="900" height="1200" loading="lazy" decoding="async"><figcaption>DMK<small>Ферментотерапія та догляд</small></figcaption></figure>
+      <figure class="rv" style="--i:1"><img src="assets/img/image-iluma.webp" alt="IMAGE Skincare" width="900" height="1200" loading="lazy" decoding="async"><figcaption>IMAGE Skincare<small>Anti-age та пілінги</small></figcaption></figure>
+      <figure class="rv" style="--i:2"><img src="assets/img/zo.webp" alt="ZO Skin Health" width="1000" height="1000" loading="lazy" decoding="async"><figcaption>ZO Skin Health<small>Лікарська косметика</small></figcaption></figure>
+      <figure class="rv"><img src="assets/img/thalgo.webp" alt="Thalgo Hyalu-Procollagène" width="626" height="624" loading="lazy" decoding="async"><figcaption>Thalgo<small>Морський догляд</small></figcaption></figure>
+      <figure class="rv" style="--i:1"><img src="assets/img/guinot.webp" alt="Guinot" width="1000" height="679" loading="lazy" decoding="async"><figcaption>Guinot<small>Професійний догляд</small></figcaption></figure>
+      <figure class="rv" style="--i:2"><video class="vid" data-lazy muted loop playsinline preload="none" poster="assets/video/rejuran.webp" aria-label="Rejuran"><source src="assets/video/rejuran.mp4" type="video/mp4"></video><figcaption>Rejuran<small>Skinglow, полінуклеотиди</small></figcaption></figure>
     </div>
     <a class="link" href="#">Усі технології</a>
+    <div class="eyebrow" style="margin-top:96px"><b>·</b> Простір клініки</div>
+    <div class="rail gal">
+      <img src="assets/img/logo-wall.webp" alt="" width="1000" height="1500" loading="lazy" decoding="async">
+      <img src="assets/img/team.webp" alt="" width="1000" height="1500" loading="lazy" decoding="async">
+      <img src="assets/img/doctor-shelf.webp" alt="" width="1000" height="1500" loading="lazy" decoding="async">
+      <img src="assets/img/decor.webp" alt="" width="1000" height="1500" loading="lazy" decoding="async">
+      <img src="assets/img/shelf-back.webp" alt="" width="1000" height="1500" loading="lazy" decoding="async">
+      <img src="assets/img/doctor-sit.webp" alt="" width="1000" height="1500" loading="lazy" decoding="async">
+    </div>
   </div>
 </section>
 
@@ -202,8 +224,8 @@
   <div class="wrap">
     <div class="head"><div><div class="eyebrow"><b>08</b> Журнал</div><h2>Читати</h2></div><a class="link" href="zhurnal.html">Усі статті</a></div>
     <div class="grid3">
-      <a class="card post rv"None href="zhurnal.html#dmk"><div class="frame"><div class="ph" data-label="[ФОТО]"></div></div><div class="tagl" style="margin-top:16px">Догляд</div><h3>Ферментотерапія DMK: це не просто маска</h3></a>
-      <a class="card post rv" style="--i:1" href="zhurnal.html#hydraderm"><div class="frame"><div class="ph" data-label="[ФОТО]"></div></div><div class="tagl" style="margin-top:16px">Технології</div><h3>Мікроструми Hydraderm: чотири ефекти за одну процедуру</h3></a>
+      <a class="card post rv"None href="zhurnal.html#dmk"><div class="frame"><img class="ph-img" src="assets/img/dmk.webp" alt="Ферментні маски DMK" width="1000" height="1500" loading="lazy" decoding="async"></div><div class="tagl" style="margin-top:16px">Догляд</div><h3>Ферментотерапія DMK: це не просто маска</h3></a>
+      <a class="card post rv" style="--i:1" href="zhurnal.html#hydraderm"><div class="frame"><img class="ph-img" src="assets/img/shelf-hydraderm.webp" alt="Косметика Hydraderm" width="1000" height="1500" loading="lazy" decoding="async"></div><div class="tagl" style="margin-top:16px">Технології</div><h3>Мікроструми Hydraderm: чотири ефекти за одну процедуру</h3></a>
       <a class="card post rv" style="--i:2" href="zhurnal.html#gubi"><div class="frame"><div class="ph" data-label="[ФОТО]"></div></div><div class="tagl" style="margin-top:16px">Губи</div><h3>М'яка корекція губ без ефекту «перекачаних»</h3></a>
     </div>
   </div>
@@ -232,6 +254,7 @@
       <div class="msgrs">
         <a href="#">Telegram <span class="fill">[ЗАПОВНИТИ]</span></a><a href="#">Viber</a><a href="#">WhatsApp</a><a href="https://ig.me/m/potapova.cosmetology" rel="noopener">Instagram DM</a><a href="tel:[ТЕЛЕФОН]">Зателефонувати</a>
       </div>
+      <img class="consult-img" src="assets/img/consult.webp" alt="Консультація в кабінеті" width="1200" height="1800" loading="lazy" decoding="async">
       <p class="lead" style="margin-top:32px">Адреса: вул. Академіка Філатова, 2А, ЖК «Манхеттен», Одеса<br>Години: <span class="fill">[ГОДИНИ РОБОТИ]</span></p>
     </div>
     <form class="book" novalidate>
@@ -248,7 +271,7 @@
 <footer>
   <div class="wrap">
     <div class="cols">
-      <div><div class="logo" style="color:#fff">Potapova<small>Cosmetology</small></div><p style="margin-top:16px">Не змінюємо, а підкреслюємо красу.</p></div>
+      <div><img class="flogo" src="assets/img/logo-white.png" alt="Potapova Cosmetology" width="800" height="334" loading="lazy"><p style="margin-top:16px">Не змінюємо, а підкреслюємо красу.</p></div>
       <div><h4>Розділи</h4><ul><li><a href="#poslugy">Послуги</a></li><li><a href="#likar">Лікар</a></li><li><a href="#rezultaty">Результати</a></li><li><a href="#zhurnal">Журнал</a></li></ul></div>
       <div><h4>Контакти</h4><ul><li><span class="fill">[ТЕЛЕФОН]</span></li><li>вул. Академіка Філатова, 2А, ЖК «Манхеттен», Одеса</li><li><a href="https://instagram.com/potapova.cosmetology" rel="noopener">@potapova.cosmetology</a></li></ul></div>
       <div><h4>Документи</h4><ul><li><a href="#">Політика конфіденційності</a></li><li><a href="#">Умови запису</a></li><li><a href="#">Протипоказання</a></li><li><a href="#">Cookie</a></li></ul></div>
