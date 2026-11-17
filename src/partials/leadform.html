@@ -1,0 +1,33 @@
+<form class="book" data-lead data-form-id="{{form}}" novalidate>
+  <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" class="hp">
+  <div class="field"><label for="{{form}}-name">Ім'я</label><input id="{{form}}-name" name="name" autocomplete="name" required></div>
+  <div class="field"><label for="{{form}}-contact">Телефон або @Telegram</label><input id="{{form}}-contact" name="contact" autocomplete="tel" inputmode="text" required></div>
+  <div class="field"><label for="{{form}}-service">Що вас цікавить</label>
+    <select id="{{form}}-service" name="service">
+      <option value="Консультація">Консультація, ще обираю</option>
+      <option value="Чистка обличчя">Чистка обличчя</option>
+      <option value="М'яка корекція губ">М'яка корекція губ</option>
+      <option value="Лазер">Лазер</option>
+      <option value="RF та IPL">RF та IPL</option>
+      <option value="Мікрострумова терапія Hydraderm">Мікрострумова терапія Hydraderm</option>
+      <option value="Ферментотерапія DMK">Ферментотерапія DMK</option>
+      <option value="Масаж">Масаж</option>
+      <option value="Епіляція">Епіляція</option>
+      <option value="Тростинний засмаг">Тростинний засмаг</option>
+      <option value="Інше">Інше</option>
+    </select></div>
+  <div class="field"><label for="{{form}}-channel">Як вам зручніше зв'язатися</label>
+    <select id="{{form}}-channel" name="channel">
+      <option value="Будь-як">Як вам зручно</option>
+      <option value="Telegram">Telegram</option>
+      <option value="Viber">Viber</option>
+      <option value="WhatsApp">WhatsApp</option>
+      <option value="Дзвінок">Дзвінок</option>
+    </select></div>
+  <div class="field"><label for="{{form}}-msg">Коментар (необов'язково)</label><textarea id="{{form}}-msg" name="msg" rows="3"></textarea></div>
+  <label class="consent"><input type="checkbox" name="consent" required> <span>Я прочитав(ла) <a class="link" href="{{P}}privacy.html">політику конфіденційності</a> і погоджуюся на обробку вказаних даних</span></label>
+  <p class="form-err" data-err role="alert" hidden>Вкажіть ім'я та спосіб зв'язку і підтвердьте згоду.</p>
+  <button class="btn btn-primary" type="submit">Записатися</button>
+  <p class="ok" data-ok role="status" hidden>Дякуємо! Заявку надіслано, ми зв'яжемося з вами.</p>
+  <p class="form-fallback" data-fallback role="status" hidden>Не вдалося надіслати автоматично. Напишіть нам напряму:</p>
+</form>

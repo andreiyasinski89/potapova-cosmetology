@@ -4,18 +4,6 @@
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const safe = (fn) => { try { return fn(); } catch (e) { return null; } };
 
-  // Theme preview (напрямки A/B)
-  const sw = document.querySelector('[data-theme-switch]');
-  const applyTheme = (t) => {
-    if (t === 'noir') root.setAttribute('data-theme', 'noir'); else root.removeAttribute('data-theme');
-    if (sw) sw.textContent = t === 'noir' ? 'Noir Clinic → Ivory' : 'Ivory Atelier → Noir';
-  };
-  applyTheme(safe(() => localStorage.getItem('pc-theme')) || 'ivory');
-  sw && sw.addEventListener('click', () => {
-    const next = root.getAttribute('data-theme') === 'noir' ? 'ivory' : 'noir';
-    applyTheme(next); safe(() => localStorage.setItem('pc-theme', next));
-  });
-
   // Sticky header: стискається та ховається при скролі вниз
   const hdr = document.querySelector('header.site');
   let lastY = scrollY;
@@ -49,24 +37,6 @@
     const set = () => ba.style.setProperty('--pos', r.value + '%');
     r.addEventListener('input', set); set();
   });
-
-  // Форма запису (демо: підключити CRM/Telegram-бот)
-  const form = document.querySelector('form.book');
-  form && form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    // TODO [ЗАПОВНИТИ]: POST на Altegio / MeetOwl / Telegram-бот лікаря
-    form.querySelector('.ok').style.display = 'block';
-    form.reset();
-  });
-
-  // Cookie-банер: за замовчуванням — відхилити неістотні
-  const ck = document.querySelector('.cookie');
-  if (ck && !safe(() => localStorage.getItem('pc-cookie'))) {
-    ck.style.display = 'block';
-    ck.querySelectorAll('button').forEach(b => b.addEventListener('click', () => {
-      safe(() => localStorage.setItem('pc-cookie', b.dataset.v)); ck.style.display = 'none';
-    }));
-  }
 
   // Відео: hero зупиняється при reduced-motion, решта грає лише у видимій зоні
   const vids = document.querySelectorAll('video');

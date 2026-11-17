@@ -1,0 +1,82 @@
+/* Зв'язок: чат-кнопка, форми, cookie-банер, відгуки, підказка мови, контакти, юридичні сторінки */
+[hidden]{display:none!important}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.linklike{background:none;border:0;padding:0;color:inherit;text-decoration:underline;font:inherit;cursor:pointer}
+.linklike:hover{color:#fff}
+.social{list-style:none;display:flex;flex-wrap:wrap;gap:10px;padding:0;margin:20px 0 0}
+.social a{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.25);transition:all .3s var(--ease)}
+.social a:hover{background:var(--champagne);color:var(--graphite);border-color:var(--champagne)}
+.social svg{width:20px;height:20px}
+/* форми */
+form.book textarea,.field textarea{background:transparent;color:inherit;border:0;border-bottom:1px solid var(--line);padding:12px 0;font:inherit;border-radius:0;resize:vertical;width:100%}
+.field select{background:var(--bg);color:inherit;cursor:pointer;width:100%}
+.dark .field select{background:var(--graphite)}
+.field input:focus,.field textarea:focus,.field select:focus{outline:0;border-color:var(--champagne)}
+.consent input{margin-top:4px;width:18px;height:18px;flex:0 0 auto;accent-color:var(--accent)}
+.form-err{background:var(--accent);color:#fff;padding:10px 14px;border-radius:var(--radius);font-size:.9rem}
+.ok{display:block;background:rgba(111,168,161,.18);border:1px solid var(--champagne);padding:12px 14px;border-radius:var(--radius);color:var(--fg)}
+.form-fallback{border:1px dashed var(--champagne);padding:14px;border-radius:var(--radius);font-size:.92rem}
+.fb-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.fb-links .btn{min-height:40px;padding:0 16px}
+/* плаваюча кнопка «Написати» */
+.chat{position:fixed;right:16px;bottom:16px;z-index:96;display:flex;flex-direction:column;align-items:flex-end;gap:12px}
+.chat-btn{position:relative;display:flex;align-items:center;gap:10px;height:56px;padding:0 22px 0 18px;border-radius:99px;background:var(--accent);color:#fff;box-shadow:0 14px 34px -12px rgba(11,34,36,.6);transition:transform .3s var(--ease)}
+.chat-btn:hover{transform:translateY(-2px)}
+.chat-btn svg{width:24px;height:24px}
+.chat-pulse{position:absolute;inset:0;border-radius:99px;box-shadow:0 0 0 0 rgba(111,168,161,.7);animation:pulse 2.6s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 16px rgba(111,168,161,0)}100%{box-shadow:0 0 0 0 rgba(111,168,161,0)}}
+.chat-panel{width:min(300px,calc(100vw - 32px));background:var(--graphite);color:var(--ivory);border-radius:var(--radius-lg);padding:18px;box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.14)}
+.chat-panel p{font-size:.85rem;color:var(--ivory-soft);margin-bottom:12px}
+.chat-panel ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.chat-panel a{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:var(--radius);border:1px solid rgba(255,255,255,.16);transition:all .25s}
+.chat-panel a:hover,.chat-panel a:focus-visible{background:var(--champagne);color:var(--graphite);border-color:var(--champagne)}
+.chat-panel svg{width:22px;height:22px;flex:0 0 auto}
+@media(max-width:640px){.chat{bottom:84px;right:12px}.chat-label{display:none}.chat-btn{width:56px;padding:0;justify-content:center}.mbar button{display:flex;justify-content:center;align-items:center;min-height:48px;border:1px solid var(--line);border-radius:var(--radius)}}
+/* cookie-банер */
+.consent-banner{position:fixed;left:16px;bottom:16px;z-index:160;max-width:440px;background:var(--graphite);color:var(--ivory);padding:22px;border-radius:var(--radius-lg);box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.14);font-size:.88rem}
+.consent-banner h2{font-size:1.5rem;margin-bottom:8px}
+.consent-banner p{color:var(--ivory-soft)}
+.consent-banner .link{color:#fff}
+.cb-more{display:grid;gap:12px;margin-top:14px}
+.cb-more label{display:grid;grid-template-columns:18px 1fr;gap:2px 10px}
+.cb-more small{grid-column:2;color:var(--ivory-soft)}
+.cb-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.cb-actions .btn{min-height:42px;padding:0 16px;font-size:.85rem}
+@media(max-width:640px){.consent-banner{left:8px;right:8px;bottom:8px;max-width:none}}
+/* підказка мови */
+.langbox{position:fixed;left:50%;top:calc(var(--topbar-h) + var(--header-h) + 12px);transform:translateX(-50%);z-index:150;width:min(30rem,calc(100vw - 24px));background:var(--graphite);color:var(--ivory);padding:18px;border-radius:var(--radius-lg);box-shadow:var(--shadow)}
+.langbox p{font:400 1.3rem var(--font-serif);margin-bottom:12px}
+.langbox div{display:flex;flex-wrap:wrap;gap:8px}
+.langbox .btn{min-height:44px;padding:0 18px;font-size:.9rem}
+/* відгуки */
+.review-card{flex:0 0 min(360px,84vw);scroll-snap-align:start;margin:0;background:var(--bg);border:1px solid var(--line);border-radius:var(--radius-lg);padding:26px;display:flex;flex-direction:column;gap:16px}
+.review-card .stars{color:var(--champagne);letter-spacing:.2em}
+.review-card blockquote{margin:0;font:400 1.35rem/1.35 var(--font-serif);flex:1}
+.review-card figcaption{display:flex;gap:12px;align-items:center;font-size:.9rem;color:var(--fg-soft)}
+.review-card figcaption>span>span{display:block}
+.review-card .ini{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--accent);color:#fff;font-weight:500}
+.rail>.review-card{flex:0 0 min(360px,84vw)}
+/* контакти */
+.ccards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:40px}
+.ccard{display:flex;gap:16px;align-items:center;padding:22px;border:1px solid var(--line);border-radius:var(--radius-lg);transition:all .3s var(--ease)}
+.ccard:hover{border-color:var(--accent);transform:translateY(-3px)}
+.ccard svg{width:28px;height:28px;color:var(--champagne);flex:0 0 auto}
+.ccard small{display:block;color:var(--fg-soft);font-size:var(--fs-small)}
+.mapbox{margin-top:40px;min-height:320px;border-radius:var(--radius-lg);border:1px dashed var(--champagne);display:grid;place-items:center;text-align:center;padding:24px;color:var(--fg-soft)}
+.rating{display:flex;gap:6px;flex-direction:row-reverse;justify-content:flex-end}
+.rating input{position:absolute;opacity:0}
+.rating label{cursor:pointer;font-size:1.8rem;color:var(--line);text-transform:none;letter-spacing:0}
+.rating input:checked~label,.rating label:hover,.rating label:hover~label{color:var(--champagne)}
+.rating input:focus-visible+label{outline:2px solid var(--champagne)}
+/* юридичні сторінки */
+.legal-page{max-width:780px;margin:0 auto;padding:72px 0 var(--section-y)}
+.legal-page h1{font-size:var(--fs-h2);margin-bottom:24px}
+.legal-page h2{font-size:1.7rem;margin:40px 0 12px}
+.legal-page p,.legal-page li{color:var(--fg-soft);margin-bottom:12px}
+.legal-page ul{padding-left:1.2em}
+.legal-page table{width:100%;border-collapse:collapse;font-size:.9rem;margin:16px 0}
+.legal-page th,.legal-page td{border-bottom:1px solid var(--line);padding:10px 8px;text-align:left;vertical-align:top}
+.legal-page .draft{border:1px dashed var(--champagne);padding:14px;border-radius:var(--radius);font-size:.9rem}
+@media(prefers-reduced-motion:reduce){.chat-pulse{animation:none}}
+/* мобільна шапка: кнопка запису є на нижній панелі, логотип не накладається */
+@media(max-width:1000px){header.site>.wrap>.btn{display:none}.consult-img{display:none}}
