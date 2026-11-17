@@ -29,7 +29,8 @@ pix = pg.get_pixmap(matrix=fitz.Matrix(z, z)); pix.save('/tmp/logo_pdf.png') if 
 full = Image.open(f'{OUT}/img/_pdf.png').convert('RGB'); W, H = full.size
 sx, sy = W / 909, H / 1286  # координати з перегляду PDF
 full.crop((int(225*sx), int(135*sy), int(695*sx), int(335*sy))).save(f'{OUT}/img/logo-dark.webp', quality=90)
-full.crop((int(385*sx), int(135*sy), int(555*sx), int(225*sy))).save(f'{OUT}/img/bear.webp', quality=90)
+# ведмідь з прозорого Potapova.png
+lg = Image.open(os.path.join(SRC, 'Potapova.png')).convert('RGBA').crop((440, 0, 845, 216)); lg.crop(lg.getbbox()).save(f'{OUT}/img/bear.png', optimize=True)
 os.remove(f'{OUT}/img/_pdf.png')
 # відео
 def vid(src, dst, w, crf=28, t=None):

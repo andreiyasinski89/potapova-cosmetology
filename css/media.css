@@ -1,7 +1,6 @@
 /* Реальні матеріали клієнта: логотип, фото, відео, бренди */
 .logo{display:flex;align-items:center;gap:12px}
-.logo .bear{height:34px;width:auto;mix-blend-mode:multiply}
-[data-theme="noir"] .logo .bear{filter:invert(1);mix-blend-mode:screen}
+.logo .bear{height:34px;width:auto}
 .logo span{display:block}
 .card .ph-img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;transition:transform 1s var(--ease)}
 .card:hover .ph-img{transform:scale(1.04)}
