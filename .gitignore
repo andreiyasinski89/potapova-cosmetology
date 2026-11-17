@@ -12,3 +12,5 @@ __pycache__/
 .claude/settings.local.json
 # оригінали фото/відео клієнта не зберігаємо в репозиторії (див. tools/build-assets.py)
 originals/
+# заполненные анкеты с контактами и данными команды: не публиковать
+private/
