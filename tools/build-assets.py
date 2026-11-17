@@ -22,7 +22,7 @@ IMGS = [
 for s, d, w in IMGS: img(s, d, w, fmt='JPEG' if d.endswith('.jpg') else 'WEBP') if False else img(s, d, w)
 Image.open(os.path.join(SRC,'IMG_5044 лого.JPG')).convert('RGB').resize((1200, round(1675*1200/2532))).save(f'{OUT}/img/og.jpg', quality=82)
 img('Potapova.png', 'logo-white.png', 800, fmt='PNG')
-fav = Image.open(os.path.join(SRC, 'Фавикон.jpg')).convert('RGB'); fav = fav.resize((128, 128)); fav.save(f'{OUT}/favicon.png')
+# фавікон: ведмідь з логотипу (assets/favicon*.png/ico, apple-touch-icon) генерується з assets/img/bear.png, див. git-історію
 # ведмідь і темний логотип з PDF
 pg = fitz.open(os.path.join(SRC, 'Potapova.pdf'))[0]; r = pg.rect; z = 4
 pix = pg.get_pixmap(matrix=fitz.Matrix(z, z)); pix.save('/tmp/logo_pdf.png') if False else pix.save(f'{OUT}/img/_pdf.png')
