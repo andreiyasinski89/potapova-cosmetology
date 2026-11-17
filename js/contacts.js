@@ -82,7 +82,7 @@
     });
   });
 
-  /* 3. Підказка мови за мовою браузера (як на clever-travel.club): один раз, без нав'язування */
+  /* 3. Підказка мови за мовою браузера: один раз, без нав'язування */
   (function langSuggest() {
     if (!window.SITE.langSuggest) return;
     var KEY = 'pcLang';

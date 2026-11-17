@@ -1,0 +1,14 @@
+# системні й тимчасові файли
+.DS_Store
+Thumbs.db
+desktop.ini
+__pycache__/
+*.pyc
+*.log
+*.tmp
+# локальні налаштування редактора та інструментів
+.vscode/
+.idea/
+.claude/settings.local.json
+# оригінали фото/відео клієнта не зберігаємо в репозиторії (див. tools/build-assets.py)
+originals/
