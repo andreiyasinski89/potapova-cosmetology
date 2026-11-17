@@ -155,6 +155,8 @@ def build_page(rel, lang):
                 .replace('{{DOMAIN}}', DOMAIN_OR_PLACEHOLDER))
     html = re.sub(r'<html lang="\w+"', f'<html lang="{lang}"', html, count=1)
     # посилання логотипа/«головна» у ru залишаються відносними (index.html), тож додаткових правок не потрібно
+    if not DOMAIN and rel not in NOINDEX:   # поки домену немає, не даємо пошуковикам індексувати github.io-адресу
+        html = html.replace('</head>', '<meta name="robots" content="noindex, nofollow">\n</head>', 1)
     if rel not in NOINDEX:
         url = lambda l: f'{DOMAIN_OR_PLACEHOLDER}/' + ('' if l == 'uk' else 'ru/') + ('' if rel == 'index.html' else rel)
         head = (f'<link rel="canonical" href="{url(lang)}">\n'
