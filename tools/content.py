@@ -186,3 +186,13 @@ SERVICES = [
 
 def by_slug(slug):
     return next(s for s in SERVICES if s['slug'] == slug)
+
+
+# Google Maps: профіль клініки. Цифри оновлюйте вручну (або підключіть Google Places API).
+GOOGLE = dict(
+    rating='5,0', count=128, asof=('станом на листопад 2026', 'на ноябрь 2026'),
+    placeid='ChIJv6nXS2QzxkAR7weqnZd8A8g',
+)
+GOOGLE['reviews_url'] = 'https://search.google.com/local/reviews?placeid=' + GOOGLE['placeid']
+GOOGLE['write_url'] = 'https://search.google.com/local/writereview?placeid=' + GOOGLE['placeid']
+GOOGLE['map_url'] = 'https://www.google.com/maps/place/?q=place_id:' + GOOGLE['placeid']

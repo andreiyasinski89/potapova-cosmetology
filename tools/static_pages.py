@@ -1,6 +1,6 @@
 """Головна та інформаційні сторінки (двомовні), які генеруються так само, як сторінки послуг."""
 from content import SERVICES, CATS, DISCLAIMER, by_slug
-from pages import B, fill, svg, head, TAIL, cta_band, card, UI, price_text
+from pages import B, fill, svg, head, TAIL, cta_band, card, UI, price_text, google_card, google_strip
 
 PP, AA = '{{P}}', '{{A}}'
 
@@ -117,6 +117,7 @@ def vidhuky():
             f'<button class="btn btn-primary" type="submit">{B(("Надіслати відгук", "Отправить отзыв"))}</button><p class="ok" data-ok role="status" hidden></p></form>')
     body = (phero(('Відгуки', 'Отзывы'), ('Що кажуть пацієнти', 'Что говорят пациенты'),
                   ('Тільки справжні відгуки: кожен проходить перевірку й публікується за згодою автора.', 'Только настоящие отзывы: каждый проходит проверку и публикуется с согласия автора.')) +
+        f'<section class="section" style="padding-bottom:0"><div class="wrap">{google_card()}</div></section>'
         f'<section class="section"><div class="wrap"><div class="rev-grid" id="revTrack">{rc("А")}{rc("Б")}{rc("В")}</div><p class="disc" style="text-align:left">{B(("Індивідуальний досвід, результат може відрізнятися.", "Индивидуальный опыт, результат может отличаться."))}</p></div></section>'
         f'<section class="section sand" id="review"><div class="wrap" style="max-width:780px"><div class="eyebrow"><b>·</b> {B(("Відгук", "Отзыв"))}</div><h2>{B(("Поділіться враженням", "Поделитесь впечатлением"))}</h2>'
         f'<p class="lead">{B(("Відгук з\'явиться на сайті після перевірки. Ми публікуємо лише ім\'я, місто й текст, без контактів.", "Отзыв появится на сайте после проверки. Мы публикуем только имя, город и текст, без контактов."))}</p>{form}</div></section>')
@@ -205,7 +206,7 @@ def index():
              f'<img class="consult-img" src="{AA}assets/img/consult.webp" alt="" width="1200" height="1800" loading="lazy" decoding="async">'
              f'<p class="lead" style="margin-top:32px">{B(("Адреса: вул. Академіка Філатова, 2А, ЖК «Манхеттен», Одеса", "Адрес: ул. Академика Филатова, 2А, ЖК «Манхэттен», Одесса"))}<br>{B(("Години:", "Часы:"))} <span class="fill" data-fill="hours">[ГОДИНИ РОБОТИ]</span></p></div>'
              '<!--#include leadform form=home--></div></section>')
-    body = hero + trust + manifest + services + team + results + brands + reviews + journal + faq_s + final
+    body = hero + trust + manifest + services + team + results + brands + reviews + journal + faq_s + final + google_strip()
     title = ('Potapova Cosmetology — косметологія в Одесі', 'Potapova Cosmetology — косметология в Одессе')
     desc = ('Не змінюємо, а підкреслюємо красу. Косметологія та ін\'єкційна естетика в Одесі. Засновниця Анастасія Потапова і команда спеціалістів.', 'Не меняем, а подчёркиваем красоту. Косметология и инъекционная эстетика в Одессе. Основательница Анастасия Потапова и команда специалистов.')
     return head(title, desc, ld) + f'<main id="main">\n{body}\n</main>' + TAIL

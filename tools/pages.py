@@ -1,6 +1,6 @@
 """Генератор сторінок послуг, каталогу та цін з tools/content.py.
 Усі тексти двомовні: <span class="l-uk">…</span><span class="l-ru">…</span>, build.py залишає потрібну мову."""
-from content import SERVICES, CATS, DISCLAIMER, P
+from content import SERVICES, CATS, DISCLAIMER, P, GOOGLE
 
 ICONS = {
  'face':  '<circle cx="17" cy="17" r="10"/><path d="M12 19c2 3 8 3 10 0M13 14h.01M21 14h.01"/>',
@@ -173,4 +173,22 @@ def gen_partials():
         links = ''.join(f'<li><a href="{{{{P}}}}poslugy/{s["slug"]}.html">{B(s["name"])}</a></li>' for s in items)
         mobile += f'<li class="mgroup"><small>{B(cn)}</small><ul>{links}</ul></li>'
     mobile += f'<li class="mgroup"><a class="mall" href="{{{{P}}}}poslugy/index.html">{B(UI["all_services"])} →</a></li>'
-    return {'nav_mega': mega, 'nav_mobile': mobile}
+    g = GOOGLE
+    gfoot = (f'<a class="gfoot" href="{{{{P}}}}vidhuky.html" aria-label="Google"><span class="g-stars" aria-hidden="true">★★★★★</span> <b>{g["rating"]}</b> '
+             f'<span>{B((f"на Google · {g["count"]} відгуків", f"на Google · {g["count"]} отзывов"))}</span> →</a>')
+    return {'nav_mega': mega, 'nav_mobile': mobile, 'gfoot': gfoot}
+
+
+def google_card():
+    g = GOOGLE
+    t = lambda uk, ru: B((uk, ru))
+    return (f'<div class="gcard rv"><div class="g-main"><span class="g-logo">Google</span><b class="g-num">{g["rating"]}</b><span class="g-stars" role="img" aria-label="{g["rating"]} / 5">★★★★★</span>'
+            f'<small>{B((f"{g["count"]} відгуків", f"{g["count"]} отзывов"))}</small></div>'
+            f'<div class="actions" style="margin-top:0"><a class="btn btn-primary" href="{g["reviews_url"]}" target="_blank" rel="noopener noreferrer" data-ga-event="click_google_reviews">{t("Читати відгуки на Google", "Читать отзывы на Google")}</a>'
+            f'<a class="btn btn-ghost" href="{g["write_url"]}" target="_blank" rel="noopener noreferrer" data-ga-event="click_google_write">{t("Залишити відгук на Google", "Оставить отзыв на Google")}</a></div>'
+            f'<p class="disc" style="text-align:left;margin:0">{B((f"Рейтинг за даними Google Maps, {g["asof"][0]}. Відгуки пишуть клієнти на Google, ми їх не редагуємо.", f"Рейтинг по данным Google Maps, {g["asof"][1]}. Отзывы пишут клиенты на Google, мы их не редактируем."))}</p></div>')
+
+def google_strip():
+    g = GOOGLE
+    return (f'<section class="gstrip"><div class="wrap"><a href="{{{{P}}}}vidhuky.html" class="gstrip-a"><span class="g-stars" aria-hidden="true">★★★★★</span><b>{g["rating"]}</b>'
+            f'<span>{B((f"на Google · {g["count"]} відгуків", f"на Google · {g["count"]} отзывов"))}</span><span class="gstrip-go">{B(("Відгуки", "Отзывы"))} →</span></a></div></section>')
