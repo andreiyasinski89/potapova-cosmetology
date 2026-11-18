@@ -174,8 +174,8 @@ def gen_partials():
         mobile += f'<li class="mgroup"><small>{B(cn)}</small><ul>{links}</ul></li>'
     mobile += f'<li class="mgroup"><a class="mall" href="{{{{P}}}}poslugy/index.html">{B(UI["all_services"])} →</a></li>'
     g = GOOGLE
-    gfoot = (f'<a class="gfoot" href="{{{{P}}}}vidhuky.html" aria-label="Google"><span class="g-stars" aria-hidden="true">★★★★★</span> <b>{g["rating"]}</b> '
-             f'<span>{B((f"на Google · {g["count"]} відгуків", f"на Google · {g["count"]} отзывов"))}</span> →</a>')
+    gfoot = (f'<a class="gfoot" href="{{{{P}}}}vidhuky.html" aria-label="Google"><span class="gfoot-top"><span class="g-stars" aria-hidden="true">★★★★★</span><b>{g["rating"]}</b></span>'
+             f'<span class="gfoot-sub">{B((f"на Google · {g["count"]} відгуків", f"на Google · {g["count"]} отзывов"))} →</span></a>')
     return {'nav_mega': mega, 'nav_mobile': mobile, 'gfoot': gfoot}
 
 

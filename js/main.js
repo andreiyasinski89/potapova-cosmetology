@@ -54,6 +54,17 @@
   /* якір на цій самій сторінці теж закриває меню */
   addEventListener('hashchange', () => setMenu(false));
 
+  /* ---------- перемикач мови: одна кнопка з випадаючим списком ---------- */
+  const dd = $('[data-lang-dd]');
+  if (dd) {
+    const btn = $('.lang-btn', dd), list = $('.lang-list', dd), cur = (root.lang || 'uk').slice(0, 2);
+    $$('a[data-lang]', dd).forEach(a => { const on = a.dataset.lang === cur; a.setAttribute('aria-current', String(on)); });
+    const setDd = open => { list.hidden = !open; btn.setAttribute('aria-expanded', String(open)); dd.classList.toggle('open', open); };
+    btn.addEventListener('click', e => { e.stopPropagation(); setDd(list.hidden); });
+    document.addEventListener('click', e => { if (!dd.contains(e.target)) setDd(false); });
+    dd.addEventListener('keydown', e => { if (e.key === 'Escape') { setDd(false); btn.focus(); } });
+  }
+
   /* ---------- поява блоків ---------- */
   const els = $$('.rv, .steps');
   if (reduce || !('IntersectionObserver' in window)) els.forEach(e => e.classList.add('in'));

@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="css/styles.css?v=6899c409">
 <link rel="stylesheet" href="css/media.css?v=9bf9b158">
 <link rel="stylesheet" href="css/connect.css?v=b4d21380">
-<link rel="stylesheet" href="css/pages.css?v=af010954">
+<link rel="stylesheet" href="css/pages.css?v=2bb8e7da">
 <link rel="icon" href="assets/favicon.ico?v=2" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png?v=2">
 <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png?v=2">
@@ -37,7 +37,6 @@
 <div class="topbar"><div class="wrap">
   <div class="tb-left"><a data-contact="map" data-contact-text="address" href="#" hidden></a><span data-contact-fallback>Одеса</span></div>
   <nav aria-label="Службова">
-    <a href="tekhnolohii.html" hreflang="uk" lang="uk" data-lang="uk">УКР</a><a href="ru/tekhnolohii.html" hreflang="ru" lang="ru" data-lang="ru">РУС</a>
     <a class="hide-m" data-contact="phone" data-contact-text="phone" href="#" hidden></a>
     <a class="hide-m" data-contact="instagram" href="#" rel="noopener" hidden>Instagram</a>
   </nav>
@@ -62,8 +61,17 @@
     <li><a href="zhurnal.html">Журнал</a></li>
     <li><a href="kontakty.html">Контакти</a></li>
   </ul>
-  <a class="btn btn-primary hbtn" href="kontakty.html#zapys" data-ga-event="click_book">Записатися</a>
-  <button class="burger" type="button" aria-label="Меню" aria-expanded="false" aria-controls="mnav"><span></span><span></span><span></span></button>
+  <div class="hright">
+    <div class="lang" data-lang-dd>
+      <button class="lang-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Мова / Language"><span class="lang-cur">УКР</span><i aria-hidden="true"></i></button>
+      <ul class="lang-list" hidden>
+        <li><a href="tekhnolohii.html" hreflang="uk" lang="uk" data-lang="uk">Українська</a></li>
+        <li><a href="ru/tekhnolohii.html" hreflang="ru" lang="ru" data-lang="ru">Русский</a></li>
+      </ul>
+    </div>
+    <a class="btn btn-primary hbtn" href="kontakty.html#zapys" data-ga-event="click_book">Записатися</a>
+    <button class="burger" type="button" aria-label="Меню" aria-expanded="false" aria-controls="mnav"><span></span><span></span><span></span></button>
+  </div>
 </div>
 <div class="progress" aria-hidden="true"><i></i></div></header>
 
@@ -83,7 +91,6 @@
       <div class="mnav-ch">
         <a data-contact="telegram" href="#" hidden>Telegram</a><a data-contact="whatsapp" href="#" hidden>WhatsApp</a><a data-contact="viber" href="#" hidden>Viber</a><a data-contact="instagram" href="#" hidden>Instagram</a><a data-contact="phone" href="#" hidden>Зателефонувати</a>
       </div>
-      <div class="mnav-lang"><a href="tekhnolohii.html" hreflang="uk" lang="uk" data-lang="uk">УКР</a><a href="ru/tekhnolohii.html" hreflang="ru" lang="ru" data-lang="ru">РУС</a></div>
     </div>
   </div>
 </div>
@@ -98,7 +105,7 @@
       <div>
         <img class="flogo" src="assets/img/logo-white.png" alt="Potapova Cosmetology" width="800" height="334" loading="lazy">
         <p style="margin-top:16px">Не змінюємо, а підкреслюємо красу.</p>
-        <a class="gfoot" href="vidhuky.html" aria-label="Google"><span class="g-stars" aria-hidden="true">★★★★★</span> <b>5,0</b> <span>на Google · 128 відгуків</span> →</a>
+        <a class="gfoot" href="vidhuky.html" aria-label="Google"><span class="gfoot-top"><span class="g-stars" aria-hidden="true">★★★★★</span><b>5,0</b></span><span class="gfoot-sub">на Google · 128 відгуків →</span></a>
         <ul class="social" aria-label="Ми в соцмережах">
           <li><a data-contact="telegram" href="#" rel="noopener" aria-label="Telegram" hidden><svg viewBox="0 0 24 24"><path d="M21.5 3.5 2.8 10.7c-.9.4-.9 1.1-.2 1.3l4.8 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8l3.1-14.8c.3-1.2-.5-1.8-1.5-1.5Z" fill="currentColor"/></svg></a></li>
           <li><a data-contact="whatsapp" href="#" rel="noopener" aria-label="WhatsApp" hidden><svg viewBox="0 0 24 24"><path d="M3 21l1.6-4.8A9 9 0 1 1 8 19.5Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1-1.5-2-1-1 .8c-1-.4-2-1.4-2.4-2.4l.8-1-1-2Z" fill="currentColor"/></svg></a></li>
@@ -125,8 +132,8 @@
 <nav class="mbar" aria-label="Швидка дія"><a class="p" href="kontakty.html#zapys" data-ga-event="click_book">Записатися</a><button type="button" data-chat-open>Написати</button></nav>
 
 <script src="js/config.js?v=11b5b68a"></script>
-<script src="js/main.js?v=19f30ad9"></script>
-<script src="js/contacts.js?v=b0b1b2d2"></script>
+<script src="js/main.js?v=a0ad4964"></script>
+<script src="js/contacts.js?v=ccc7eb5f"></script>
 <script src="js/forms.js?v=ff0422e1"></script>
 <script src="js/reviews.js?v=f714e6a9"></script>
 <script src="js/consent.js?v=0df70e5a"></script>

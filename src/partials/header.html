@@ -3,7 +3,6 @@
 <div class="topbar"><div class="wrap">
   <div class="tb-left"><a data-contact="map" data-contact-text="address" href="#" hidden></a><span data-contact-fallback>Одеса</span></div>
   <nav aria-label="Службова">
-    <a href="{{LANG_UK}}" hreflang="uk" lang="uk" data-lang="uk">УКР</a><a href="{{LANG_RU}}" hreflang="ru" lang="ru" data-lang="ru">РУС</a>
     <a class="hide-m" data-contact="phone" data-contact-text="phone" href="#" hidden></a>
     <a class="hide-m" data-contact="instagram" href="#" rel="noopener" hidden>Instagram</a>
   </nav>
@@ -28,8 +27,17 @@
     <li><a href="{{P}}zhurnal.html">Журнал</a></li>
     <li><a href="{{P}}kontakty.html">Контакти</a></li>
   </ul>
-  <a class="btn btn-primary hbtn" href="{{P}}kontakty.html#zapys" data-ga-event="click_book">Записатися</a>
-  <button class="burger" type="button" aria-label="Меню" aria-expanded="false" aria-controls="mnav"><span></span><span></span><span></span></button>
+  <div class="hright">
+    <div class="lang" data-lang-dd>
+      <button class="lang-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Мова / Language"><span class="lang-cur">{{LANG_CUR}}</span><i aria-hidden="true"></i></button>
+      <ul class="lang-list" hidden>
+        <li><a href="{{LANG_UK}}" hreflang="uk" lang="uk" data-lang="uk">Українська</a></li>
+        <li><a href="{{LANG_RU}}" hreflang="ru" lang="ru" data-lang="ru">Русский</a></li>
+      </ul>
+    </div>
+    <a class="btn btn-primary hbtn" href="{{P}}kontakty.html#zapys" data-ga-event="click_book">Записатися</a>
+    <button class="burger" type="button" aria-label="Меню" aria-expanded="false" aria-controls="mnav"><span></span><span></span><span></span></button>
+  </div>
 </div>
 <div class="progress" aria-hidden="true"><i></i></div></header>
 
@@ -49,7 +57,6 @@
       <div class="mnav-ch">
         <a data-contact="telegram" href="#" hidden>Telegram</a><a data-contact="whatsapp" href="#" hidden>WhatsApp</a><a data-contact="viber" href="#" hidden>Viber</a><a data-contact="instagram" href="#" hidden>Instagram</a><a data-contact="phone" href="#" hidden>Зателефонувати</a>
       </div>
-      <div class="mnav-lang"><a href="{{LANG_UK}}" hreflang="uk" lang="uk" data-lang="uk">УКР</a><a href="{{LANG_RU}}" hreflang="ru" lang="ru" data-lang="ru">РУС</a></div>
     </div>
   </div>
 </div>

@@ -172,7 +172,7 @@ def build_page(rel, lang):
         html = translate_html(html, rel)
     html = restore(html)
     html = (html.replace('{{A}}', A).replace('{{P}}', P).replace('{{LANG_UK}}', lang_uk).replace('{{LANG_RU}}', lang_ru)
-                .replace('{{DOMAIN}}', DOMAIN_OR_PLACEHOLDER))
+                .replace('{{DOMAIN}}', DOMAIN_OR_PLACEHOLDER).replace('{{LANG_CUR}}', 'УКР' if lang == 'uk' else 'РУС'))
     html = bust(html)
     html = re.sub(r'<html lang="\w+"', f'<html lang="{lang}"', html, count=1)
     # посилання логотипа/«головна» у ru залишаються відносними (index.html), тож додаткових правок не потрібно

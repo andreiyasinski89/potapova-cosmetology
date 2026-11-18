@@ -27,7 +27,7 @@ for p in sorted(pages):
         text = re.sub(r'<[^>]+>', ' ', text)
         text = re.sub(r'\[[^\]]*\]', '', text)
         left = set(re.findall(r'\b\w*[іїєґІЇЄҐ]\w*\b', text))
-        left = {w for w in left if w.lower() not in {'potapova'}}
+        left = {w for w in left if w.lower() not in {'potapova', 'українська'}}
         if left: bad.append((p, 'українські літери в ru: ' + ', '.join(sorted(left)[:8])))
 print(f'перевірено сторінок: {len(pages)}')
 for p, why in bad: print(' ✗', p, why)

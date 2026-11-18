@@ -39,7 +39,9 @@
   var configured = {};
   document.querySelectorAll('[data-contact]').forEach(function (a) {
     var ch = a.getAttribute('data-contact'), fn = CHANNEL[ch], href = fn ? fn(a.getAttribute('data-msg')) : '';
-    if (!href) { a.hidden = true; return; }
+    var li = a.parentElement && a.parentElement.tagName === 'LI' ? a.parentElement : null;
+    if (!href) { a.hidden = true; if (li) li.hidden = true; return; }
+    if (li) li.hidden = false;
     configured[ch] = true;
     a.href = href; a.hidden = false;
     if (/^https?:/.test(href) && ch !== 'map') { a.target = '_blank'; a.rel = 'noopener noreferrer'; }
