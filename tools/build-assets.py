@@ -37,7 +37,8 @@ def vid(src, dst, w, crf=28, t=None):
     p = os.path.join(SRC, src); o = f'{OUT}/video/{dst}.mp4'
     subprocess.run(['ffmpeg','-v','error','-y','-i',p,'-an','-vf',f'scale={w}:-2,fps=30','-c:v','libx264','-preset','slow','-crf',str(crf),'-pix_fmt','yuv420p','-movflags','+faststart',o],check=True)
     subprocess.run(['ffmpeg','-v','error','-y','-ss','1','-i',p,'-frames:v','1','-vf',f'scale={w}:-2',f'{OUT}/video/{dst}.jpg'],check=True)
-vid('IMG_5360.MOV','hero',1080,30); vid('C2763.MP4','massage-1',720); vid('C2788.MP4','massage-2',720); vid('IMG_2704.MOV','rejuran',720)
+# hero-loop.mp4 робиться окремо: python tools/make-hero-loop.py <IMG_5360.MOV>
+vid('IMG_5360.MOV','hero-poster',1080,30); vid('C2763.MP4','massage-1',720); vid('C2788.MP4','massage-2',720); vid('IMG_2704.MOV','rejuran',720)
 for f in os.listdir(f'{OUT}/video'):
     if f.endswith('.jpg'):
         Image.open(f'{OUT}/video/{f}').save(f'{OUT}/video/{f[:-4]}.webp','WEBP',quality=78); os.remove(f'{OUT}/video/{f}')

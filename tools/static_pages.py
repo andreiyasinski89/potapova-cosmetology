@@ -168,16 +168,16 @@ def index():
     ld += ('<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[' + ','.join(
         '{"@type":"Question","name":"' + B(q, q="'") + '","acceptedAnswer":{"@type":"Answer","text":"' + B(a, q="'") + '"}}' for q, a in faqs) + ']}</script>\n')
     faq = ''.join(f'<details><summary>{B(q)}</summary><p>{B(a)}</p></details>' for q, a in faqs)
-    hero = (f'<section class="hero" aria-label="Intro"><video class="hero-media" autoplay muted loop playsinline preload="auto" poster="{AA}assets/video/hero.webp" aria-hidden="true"><source src="{AA}assets/video/hero.mp4" type="video/mp4"></video>'
+    hero = (f'<section class="hero" aria-label="Intro"><video class="hero-media" autoplay muted loop playsinline preload="auto" poster="{AA}assets/video/hero.webp" aria-hidden="true"><source src="{AA}assets/video/hero-loop.mp4" type="video/mp4"></video>'
             f'<div class="wrap"><h1 class="hin">{B(("Не змінюємо. <em>Підкреслюємо.</em>", "Не меняем. <em>Подчёркиваем.</em>"))}</h1>'
             f'<p class="sub hin" style="--i:1">{B(("Косметологія та ін\'єкційна естетика в Одесі", "Косметология и инъекционная эстетика в Одессе"))}</p>'
             f'<div class="cta hin" style="--i:2"><a class="btn btn-primary" href="{PP}kontakty.html#zapys" data-ga-event="click_book">{B(("Записатися на консультацію", "Записаться на консультацию"))}</a><a class="btn btn-ghost" href="{PP}poslugy/index.html">{B(("Послуги", "Услуги"))}</a></div>'
             f'<nav class="quick hin" style="--i:3" aria-label="Quick links"><a href="{PP}poslugy/index.html">{B(("Послуги", "Услуги"))}</a><a href="{PP}komanda.html">{B(("Команда", "Команда"))}</a><a href="{PP}tsiny.html">{B(("Ціни", "Цены"))}</a><a href="{PP}vidhuky.html">{B(("Відгуки", "Отзывы"))}</a><a href="{PP}kontakty.html">{B(("Контакти", "Контакты"))}</a></nav></div></section>')
-    trust = ('<div class="wrap"><div class="trust" aria-label="Facts">' + ''.join(
+    trust = ('<div class="trust-band"><div class="wrap"><div class="trust" aria-label="Facts">' + ''.join(
         f'<div class="rv" style="--i:{i}"><strong class="fill">{n}</strong><span>{B(t)}</span></div>' for i, (n, t) in enumerate([
             ('[N]', ('років практики', 'лет практики')), ('[N]', ('проведених процедур', 'проведённых процедур')),
-            ('№ [ЛІЦЕНЗІЯ]', ('ліцензія МОЗ', 'лицензия МЗ')), ('[100%]', ('сертифіковані препарати', 'сертифицированные препараты'))])) + '</div></div>')
-    manifest = (f'<section class="section dark manifest" style="margin-top:var(--section-y)"><div class="wrap"><div class="eyebrow"><b>01</b> {B(("Філософія", "Философия"))}</div>'
+            ('№ [ЛІЦЕНЗІЯ]', ('ліцензія МОЗ', 'лицензия МЗ')), ('[100%]', ('сертифіковані препарати', 'сертифицированные препараты'))])) + '</div></div></div>')
+    manifest = (f'<section class="section dark manifest"><div class="wrap"><div class="eyebrow"><b>01</b> {B(("Філософія", "Философия"))}</div>'
                 f'<p class="rv">{B(("Ми не обіцяємо чудес. Ми працюємо з вашою шкірою — <span>уважно, точно і без поспіху.</span>", "Мы не обещаем чудес. Мы работаем с вашей кожей — <span>внимательно, точно и без спешки.</span>"))}</p>'
                 f'<div class="three"><div>{B(("Точність", "Точность"))}</div><div>{B(("Природність", "Естественность"))}</div><div>{B(("Безпека", "Безопасность"))}</div></div>'
                 f'<p style="margin-top:40px"><a class="link" href="{PP}pro-nas.html">{B(("Про клініку", "О клинике"))}</a></p></div></section>')
