@@ -385,3 +385,6 @@ footer .social li[hidden],footer li:has(> a[hidden]:only-child){display:none}
 .mapbox .map-ph{min-height:440px}
 .mapbox.is-loaded .map-ph{visibility:hidden}
 @media(max-width:640px){.mapbox,.mapbox .map-ph{min-height:360px}}
+
+/* hero на широких екранах: ведмідь повністю в кадрі (відео вертикальне, тож без цього обрізається верх) */
+video.hero-media{object-position:50% 37%}
