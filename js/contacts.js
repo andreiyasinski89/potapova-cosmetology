@@ -54,7 +54,9 @@
   document.querySelectorAll('[data-contact-fallback]').forEach(function (el) { if (configured.map) el.hidden = true; });
   var any = Object.keys(configured).some(function (k) { return k !== 'map'; });
   document.querySelectorAll('[data-contact-empty]').forEach(function (el) { if (any) el.hidden = true; });
-  document.querySelectorAll('[data-fill="hours"]').forEach(function (el) { if (C.hours) { el.textContent = C.hours; el.classList.remove('fill'); } });
+  var hrs = (LANG === 'ru' && C.hoursRu) || C.hours;
+  document.querySelectorAll('[data-fill="hours"]').forEach(function (el) { if (hrs) { el.textContent = hrs; el.classList.remove('fill'); } });
+  document.querySelectorAll('[data-hours]').forEach(function (el) { if (hrs) { el.textContent = hrs; el.hidden = false; if (el.parentElement && el.parentElement.tagName === 'LI') el.parentElement.hidden = false; } });
   window.SITE_CONFIGURED = configured;
 
   /* 2. Плаваюча кнопка «Написати» з меню каналів */
