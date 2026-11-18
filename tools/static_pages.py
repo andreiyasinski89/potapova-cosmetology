@@ -1,5 +1,6 @@
 """Головна та інформаційні сторінки (двомовні), які генеруються так само, як сторінки послуг."""
 from content import SERVICES, CATS, DISCLAIMER, by_slug
+from seo import PAGE_SEO, ARTICLE_SEO, BUSINESS_LD, crumbs_ld, _ld
 from pages import B, fill, svg, head, TAIL, cta_band, card, UI, price_text, google_card, google_strip, google_reviews
 
 PP, AA = '{{P}}', '{{A}}'
@@ -29,7 +30,7 @@ def pro_nas():
             (('План', 'План'), ('Пояснюємо, що, навіщо та в якій послідовності. Називаємо орієнтовну вартість.', 'Объясняем, что, зачем и в какой последовательности. Называем ориентировочную стоимость.')),
             (('Процедура та догляд', 'Процедура и уход'), ('Проводимо процедуру, даємо рекомендації й залишаємося на зв\'язку після візиту.', 'Проводим процедуру, даём рекомендации и остаёмся на связи после визита.'))]
     pr = ''.join(f'<div class="rv" style="--i:{i}"><h3>{B(t)}</h3><p>{B(d)}</p></div>' for i, (t, d) in enumerate(proc))
-    gal = ''.join([IMG('logo-wall-wide', '', 1600, 1400, 'wide'), IMG('decor'), IMG('team'), IMG('doctor-shelf'), IMG('shelf-back'), IMG('doctor-sit')])
+    gal = ''.join([IMG('logo-wall-wide', B(('Вивіска Potapova Cosmetology з ведмедем', 'Вывеска Potapova Cosmetology с медведем')), 1600, 1400, 'wide'), IMG('decor', B(('Інтер\'єр клініки: декор у темних тонах', 'Интерьер клиники: декор в тёмных тонах'))), IMG('team', B(('Команда Potapova Cosmetology', 'Команда Potapova Cosmetology'))), IMG('doctor-shelf', B(('Анастасія Потапова біля полиць із доглядом', 'Анастасия Потапова у полок с уходом'))), IMG('shelf-back', B(('Професійний догляд на полицях клініки', 'Профессиональный уход на полках клиники'))), IMG('doctor-sit', B(('Анастасія Потапова в кабінеті', 'Анастасия Потапова в кабинете')))])
     body = (phero(('Про клініку', 'О клинике'), ('Не змінюємо. Підкреслюємо.', 'Не меняем. Подчёркиваем.'),
                   ('Potapova Cosmetology: косметологія та ін\'єкційна естетика в Одесі. Ми працюємо тихо, точно й без поспіху.', 'Potapova Cosmetology: косметология и инъекционная эстетика в Одессе. Мы работаем тихо, точно и без спешки.')) +
         f'<section class="section"><div class="wrap"><div class="eyebrow"><b>01</b> {B(("Принципи", "Принципы"))}</div><h2>{B(("Три слова, на яких стоїть клініка", "Три слова, на которых стоит клиника"))}</h2><div class="values">{v}</div>'
@@ -39,8 +40,7 @@ def pro_nas():
         f'<section class="section dark"><div class="wrap two-col"><div><div class="eyebrow"><b>04</b> {B(("Безпека", "Безопасность"))}</div><h2>{B(("Стерильність і оригінальні препарати", "Стерильность и оригинальные препараты"))}</h2></div>'
         f'<div><ul class="ticks"><li>{B(("Одноразові розхідники та обробка інструментів за протоколом", "Одноразовые расходники и обработка инструментов по протоколу"))}</li><li>{B(("Сертифіковані оригінальні препарати від перевірених виробників", "Сертифицированные оригинальные препараты от проверенных производителей"))}</li><li>{B(("Інформована згода й анкета перед кожною процедурою", "Информированное согласие и анкета перед каждой процедурой"))}</li><li>{ph(("підтвердити пункти з клієнтом, додати ліцензію та документи", "подтвердить пункты с клиентом, добавить лицензию и документы"))}</li></ul>'
         f'<div class="actions"><a class="btn btn-ghost" href="{PP}tekhnolohii.html">{B(("Технології та бренди", "Технологии и бренды"))}</a><a class="btn btn-ghost" href="{PP}komanda.html">{B(("Наша команда", "Наша команда"))}</a></div></div></div></section>')
-    return page(('Про клініку — Potapova Cosmetology, Одеса', 'О клинике — Potapova Cosmetology, Одесса'),
-                ('Potapova Cosmetology: косметологія в Одесі, де не змінюють, а підкреслюють красу. Принципи, процес роботи, простір клініки.', 'Potapova Cosmetology: косметология в Одессе, где не меняют, а подчёркивают красоту. Принципы, процесс работы, пространство клиники.'), body)
+    return page(PAGE_SEO['pro-nas.html'][0], PAGE_SEO['pro-nas.html'][1], body, crumbs_ld([(UI['home'], 'index.html'), (('Про клініку', 'О клинике'), 'pro-nas.html')], B))
 
 # ---------------------------------------------------------------- Команда
 def komanda():
@@ -57,8 +57,7 @@ def komanda():
         f'<p class="lead">{B(("Принцип клініки: підкреслювати природну красу, а не змінювати обличчя. Ми працюємо командою, і кожен спеціаліст відповідає за свій напрямок.", "Принцип клиники: подчёркивать естественную красоту, а не менять лицо. Мы работаем командой, и каждый специалист отвечает за своё направление."))} {ph(("освіта, спеціальність, сертифікати Анастасії", "образование, специальность, сертификаты Анастасии"))}</p>'
         f'<ul class="principles"><li><b>I</b><span>{B(("Спочатку діагностика, потім план.", "Сначала диагностика, потом план."))}</span></li><li><b>II</b><span>{B(("Мінімально необхідне втручання.", "Минимально необходимое вмешательство."))}</span></li><li><b>III</b><span>{B(("Стерильність і сертифіковані препарати.", "Стерильность и сертифицированные препараты."))}</span></li></ul></div></div></section>'
         f'<section class="section"><div class="wrap"><div class="eyebrow"><b>02</b> {B(("Спеціалісти", "Специалисты"))}</div><h2 style="margin-bottom:40px">{B(("Команда клініки", "Команда клиники"))}</h2><div class="team">{cards}</div></div></section>')
-    return page(('Команда — Potapova Cosmetology, Одеса', 'Команда — Potapova Cosmetology, Одесса'),
-                ('Засновниця Анастасія Потапова, косметологи, майстер лазерної епіляції та адміністратор Potapova Cosmetology.', 'Основательница Анастасия Потапова, косметологи, мастер лазерной эпиляции и администратор Potapova Cosmetology.'), body)
+    return page(PAGE_SEO['komanda.html'][0], PAGE_SEO['komanda.html'][1], body, crumbs_ld([(UI['home'], 'index.html'), (('Команда', 'Команда'), 'komanda.html')], B))
 
 # ---------------------------------------------------------------- Результати
 def rezultaty():
@@ -74,8 +73,7 @@ def rezultaty():
                   ('Реальні роботи без фільтрів. Тягніть повзунок, щоб порівняти.', 'Реальные работы без фильтров. Двигайте ползунок, чтобы сравнить.')) +
         f'<section class="section"><div class="wrap"><div class="res-grid">{ba(0)}{ba(1)}</div><p class="disc">{B(("Індивідуальний досвід, результат може відрізнятися. Публікація: за письмовою згодою пацієнта, без надмірної ретуші.", "Индивидуальный опыт, результат может отличаться. Публикация: с письменного согласия пациента, без чрезмерной ретуши."))}</p></div></section>'
         f'<section class="section sand"><div class="wrap"><div class="eyebrow"><b>·</b> {B(("Наші правила", "Наши правила"))}</div><h2>{B(("Як ми показуємо результати", "Как мы показываем результаты"))}</h2><div class="proc">{pr}</div></div></section>')
-    return page(('Результати — Potapova Cosmetology, Одеса', 'Результаты — Potapova Cosmetology, Одесса'),
-                ('Фото до і після процедур у Potapova Cosmetology: лише за згодою пацієнтів, без надмірної ретуші.', 'Фото до и после процедур в Potapova Cosmetology: только с согласия пациентов, без чрезмерной ретуши.'), body)
+    return page(PAGE_SEO['rezultaty.html'][0], PAGE_SEO['rezultaty.html'][1], body, crumbs_ld([(UI['home'], 'index.html'), (('Результати', 'Результаты'), 'rezultaty.html')], B))
 
 # ---------------------------------------------------------------- Технології та бренди
 def tekhnolohii():
@@ -98,8 +96,7 @@ def tekhnolohii():
     body = (phero(('Технології та бренди', 'Технологии и бренды'), ('Апарати й препарати, яким ми довіряємо', 'Аппараты и препараты, которым мы доверяем'),
                   ('Працюємо з професійними лініями та апаратами від перевірених виробників. Назва бренду не замінює консультацію: що підійде саме вам, вирішує спеціаліст.', 'Работаем с профессиональными линиями и аппаратами от проверенных производителей. Название бренда не заменяет консультацию: что подойдёт именно вам, решает специалист.')) +
         f'<section class="section"><div class="wrap">{rows}</div></section>')
-    return page(('Технології та бренди — Potapova Cosmetology', 'Технологии и бренды — Potapova Cosmetology'),
-                ('DMK, Hydraderm, IMAGE Skincare, ZO Skin Health, Thalgo, Guinot, Rejuran: професійні лінії та апарати Potapova Cosmetology.', 'DMK, Hydraderm, IMAGE Skincare, ZO Skin Health, Thalgo, Guinot, Rejuran: профессиональные линии и аппараты Potapova Cosmetology.'), body)
+    return page(PAGE_SEO['tekhnolohii.html'][0], PAGE_SEO['tekhnolohii.html'][1], body, crumbs_ld([(UI['home'], 'index.html'), (('Технології та бренди', 'Технологии и бренды'), 'tekhnolohii.html')], B))
 
 # ---------------------------------------------------------------- Відгуки
 def vidhuky():
@@ -123,8 +120,7 @@ def vidhuky():
         f'<div class="rev-grid" id="revTrack"><figure class="review-card" hidden><div class="stars" role="img" aria-label="5 / 5">★★★★★</div><blockquote></blockquote><figcaption><span class="ini"></span><span><span></span><span></span></span></figcaption></figure></div></div></section>'
         f'<section class="section sand" id="review"><div class="wrap" style="max-width:780px"><div class="eyebrow"><b>·</b> {B(("Відгук", "Отзыв"))}</div><h2>{B(("Поділіться враженням", "Поделитесь впечатлением"))}</h2>'
         f'<p class="lead">{B(("Відгук з\'явиться на сайті після перевірки. Ми публікуємо лише ім\'я, місто й текст, без контактів.", "Отзыв появится на сайте после проверки. Мы публикуем только имя, город и текст, без контактов."))}</p>{form}</div></section>')
-    return page(('Відгуки — Potapova Cosmetology, Одеса', 'Отзывы — Potapova Cosmetology, Одесса'),
-                ('Відгуки пацієнтів Potapova Cosmetology в Одесі та форма, щоб залишити власний.', 'Отзывы пациентов Potapova Cosmetology в Одессе и форма, чтобы оставить собственный.'), body)
+    return page(PAGE_SEO['vidhuky.html'][0], PAGE_SEO['vidhuky.html'][1], body, crumbs_ld([(UI['home'], 'index.html'), (('Відгуки', 'Отзывы'), 'vidhuky.html')], B))
 
 # ---------------------------------------------------------------- Журнал (список)
 ARTICLES = [  # slug, послуга, зображення, тег
@@ -143,7 +139,7 @@ TITLES = {  # назви статей (з src/zhurnal/*.html)
 }
 def post_card(slug, i=0):
     s, svc, img, tag = next(a for a in ARTICLES if a[0] == slug)
-    media = (f'<img class="ph-img" src="{AA}assets/{"video/massage-1.webp" if img == "massage" else "img/" + img + ".webp"}" alt="" width="900" height="600" loading="lazy" decoding="async">' if img
+    media = (f'<img class="ph-img" src="{AA}assets/{"video/massage-1.webp" if img == "massage" else "img/" + img + ".webp"}" alt="{B(TITLES[slug])}" width="900" height="600" loading="lazy" decoding="async">' if img
              else f'<div class="pvis pvis-sm">{svg(by_slug(svc)["icon"], "pvis-ico")}</div>')
     return (f'<a class="card post rv" style="--i:{i}" href="{PP}zhurnal/{slug}.html"><div class="frame">{media}</div><div class="tagl" style="margin-top:16px">{B(tag)}</div>'
             f'<h3>{B(TITLES[slug])}</h3><div class="meta"><span>{B(("Читати", "Читать"))}</span><i>→</i></div></a>')
@@ -152,16 +148,14 @@ def zhurnal():
     cards = ''.join(post_card(a[0], i % 3) for i, a in enumerate(ARTICLES))
     body = (phero(('Журнал', 'Журнал'), ('Читати', 'Читать'), ('Про процедури та догляд простою мовою: що це, кому підходить і чого очікувати.', 'О процедурах и уходе простым языком: что это, кому подходит и чего ожидать.')) +
             f'<section class="section"><div class="wrap"><div class="grid3">{cards}</div></div></section>')
-    return page(('Журнал — Potapova Cosmetology', 'Журнал — Potapova Cosmetology'),
-                ('Статті про процедури та догляд від Potapova Cosmetology, Одеса.', 'Статьи о процедурах и уходе от Potapova Cosmetology, Одесса.'), body)
+    return page(PAGE_SEO['zhurnal.html'][0], PAGE_SEO['zhurnal.html'][1], body, crumbs_ld([(UI['home'], 'index.html'), (('Журнал', 'Журнал'), 'zhurnal.html')], B))
 
 # ---------------------------------------------------------------- Головна
 def index():
     feats = ['chystky', 'fermentoterapiya-dmk', 'mikrostrumy-hydraderm', 'gubi', 'lazerna-epilyatsiya', 'masazh']
     cards = ''.join(card(by_slug(s), f' style="--i:{i % 3}"') for i, s in enumerate(feats))
     cat_links = ''.join(f'<a class="chip" href="{PP}poslugy/index.html#{c}">{B(n)}</a>' for c, n in CATS)
-    ld = ('<script type="application/ld+json">{"@context":"https://schema.org","@type":"MedicalBusiness","name":"Potapova Cosmetology","description":"' + B(('Косметологія та ін\'єкційна естетика в Одесі', 'Косметология и инъекционная эстетика в Одессе'), q="'") +
-          '","telephone":"+380953231032","openingHours":"Mo-Su 09:00-21:00","address":{"@type":"PostalAddress","addressLocality":"Одеса","addressCountry":"UA","streetAddress":"вул. Академіка Філатова, 2, корпус 2 (ЖК «Манхеттен»)"},"sameAs":["https://www.instagram.com/potapova.cosmetology"],"founder":{"@type":"Person","name":"' + B(('Анастасія Потапова', 'Анастасия Потапова'), q="'") + '"}}</script>\n')
+    ld = _ld(BUSINESS_LD % B(('Анастасія Потапова', 'Анастасия Потапова'), q="'"))
     faqs = [(('Як проходить перша консультація?', 'Как проходит первая консультация?'), ('Спеціаліст оглядає шкіру, уточнює побажання та історію здоров\'я і пропонує план. Консультація не зобов\'язує до процедури.', 'Специалист осматривает кожу, уточняет пожелания и историю здоровья и предлагает план. Консультация не обязывает к процедуре.')),
             (('Чи боляче на лазері?', 'Больно ли на лазере?'), ('Ми працюємо так, щоб процедура була максимально комфортною. Відчуття залежать від зони та індивідуальної чутливості.', 'Мы работаем так, чтобы процедура была максимально комфортной. Ощущения зависят от зоны и индивидуальной чувствительности.')),
             (('Скільки коштують процедури?', 'Сколько стоят процедуры?'), ('Орієнтовні ціни вказані на сторінці цін. Остаточна вартість залежить від зони та плану, який визначає спеціаліст.', 'Ориентировочные цены указаны на странице цен. Окончательная стоимость зависит от зоны и плана, который определяет специалист.'))]
@@ -181,7 +175,7 @@ def index():
                 f'<p class="rv">{B(("Ми не обіцяємо чудес. Ми працюємо з вашою шкірою — <span>уважно, точно і без поспіху.</span>", "Мы не обещаем чудес. Мы работаем с вашей кожей — <span>внимательно, точно и без спешки.</span>"))}</p>'
                 f'<div class="three"><div>{B(("Точність", "Точность"))}</div><div>{B(("Природність", "Естественность"))}</div><div>{B(("Безпека", "Безопасность"))}</div></div>'
                 f'<p style="margin-top:40px"><a class="link" href="{PP}pro-nas.html">{B(("Про клініку", "О клинике"))}</a></p></div></section>')
-    services = (f'<section class="section"><div class="wrap"><div class="head"><div><div class="eyebrow"><b>02</b> {B(("Послуги", "Услуги"))}</div><h2>{B(("Що ми робимо", "Что мы делаем"))}</h2></div><a class="link" href="{PP}poslugy/index.html">{B(UI["all_services"])}</a></div>'
+    services = (f'<section class="section"><div class="wrap"><div class="head"><div><div class="eyebrow"><b>02</b> {B(("Послуги", "Услуги"))}</div><h2>{B(("Що ми робимо", "Что мы делаем"))}</h2><p class="lead">{B(("Косметолог в Одесі: чистки обличчя, ферментотерапія DMK, мікроструми, лазерна епіляція, RF та IPL, корекція губ, масаж.", "Косметолог в Одессе: чистки лица, ферментотерапия DMK, микротоки, лазерная эпиляция, RF и IPL, коррекция губ, массаж."))}</p></div><a class="link" href="{PP}poslugy/index.html">{B(UI["all_services"])}</a></div>'
                 f'<div class="grid3">{cards}</div><div class="chips" style="margin:48px 0 0">{cat_links}</div></div></section>')
     team = (f'<section class="section sand"><div class="wrap teaser-split"><img class="rv" src="{AA}assets/img/doctor.webp" alt="Анастасія Потапова, засновниця Potapova Cosmetology" width="1200" height="1800" loading="lazy" decoding="async">'
             f'<div class="rv" style="--i:1"><div class="eyebrow"><b>03</b> {B(("Команда", "Команда"))}</div><h2>{B(("Анастасія Потапова", "Анастасия Потапова"))}</h2><p class="role">{B(("Засновниця Potapova Cosmetology", "Основательница Potapova Cosmetology"))}</p>'
@@ -205,12 +199,11 @@ def index():
              f'<p class="lead">{B(("Перша консультація: огляд, план, відповіді на питання. Візьміть із собою список препаратів і процедур, які ви вже проходили.", "Первая консультация: осмотр, план, ответы на вопросы. Возьмите с собой список препаратов и процедур, которые вы уже проходили."))}</p>'
              '<div class="msgrs"><a data-contact="telegram" href="#" rel="noopener" hidden>Telegram</a><a data-contact="whatsapp" href="#" rel="noopener" hidden>WhatsApp</a><a data-contact="instagram" href="#" rel="noopener" hidden>Instagram DM</a>'
              f'<a data-contact="phone" href="#" hidden>{B(("Зателефонувати", "Позвонить"))}</a><span class="fill" data-contact-empty>[ЗАПОВНИТИ: месенджери у js/config.js]</span></div>'
-             f'<img class="consult-img" src="{AA}assets/img/consult.webp" alt="" width="1200" height="1800" loading="lazy" decoding="async">'
+             f'<img class="consult-img" src="{AA}assets/img/consult.webp" alt="{B(('Консультація косметолога в Potapova Cosmetology', 'Консультация косметолога в Potapova Cosmetology'))}" width="1200" height="1800" loading="lazy" decoding="async">'
              f'<p class="lead" style="margin-top:32px">{B(("Адреса: вул. Академіка Філатова, 2, корпус 2 (ЖК «Манхеттен»), Одеса", "Адрес: ул. Академика Филатова, 2, корпус 2 (ЖК «Манхэттен»), Одесса"))}<br>{B(("Години:", "Часы:"))} <span class="fill" data-fill="hours">[ГОДИНИ РОБОТИ]</span></p></div>'
              '<!--#include leadform form=home--></div></section>')
     body = hero + trust + manifest + services + team + results + brands + journal + faq_s + final + google_strip()
-    title = ('Potapova Cosmetology — косметологія в Одесі', 'Potapova Cosmetology — косметология в Одессе')
-    desc = ('Не змінюємо, а підкреслюємо красу. Косметологія та ін\'єкційна естетика в Одесі. Засновниця Анастасія Потапова і команда спеціалістів.', 'Не меняем, а подчёркиваем красоту. Косметология и инъекционная эстетика в Одессе. Основательница Анастасия Потапова и команда специалистов.')
+    title, desc = PAGE_SEO['index.html']
     return head(title, desc, ld) + f'<main id="main">\n{body}\n</main>' + TAIL
 
 def gen_static():

@@ -1,5 +1,6 @@
 """Генератор сторінок послуг, каталогу та цін з tools/content.py.
 Усі тексти двомовні: <span class="l-uk">…</span><span class="l-ru">…</span>, build.py залишає потрібну мову."""
+from seo import SERVICE_SEO, PAGE_SEO, crumbs_ld, faq_ld, service_ld
 from content import SERVICES, CATS, DISCLAIMER, P, GOOGLE, GOOGLE_REVIEWS, REVIEWS_PAGE_SIZE
 
 ICONS = {
@@ -51,7 +52,7 @@ def price_text(s):
     return B((f'від {s["price"]} ₴', f'от {s["price"]} ₴'))
 
 def card(s, extra=''):
-    media = (f'<img class="ph-img" src="{{{{A}}}}assets/{"video/massage-2.webp" if s["slug"]=="masazh" else "img/"+s["img"]+".webp"}" alt="" width="900" height="1125" loading="lazy" decoding="async">'
+    media = (f'<img class="ph-img" src="{{{{A}}}}assets/{"video/massage-2.webp" if s["slug"]=="masazh" else "img/"+s["img"]+".webp"}" alt="{B(s["name"])}" width="900" height="1125" loading="lazy" decoding="async">'
              if s['img'] else f'<div class="pvis pvis-sm">{svg(s["icon"], "pvis-ico")}</div>')
     cat = next(n for c, n in CATS if c == s['cat'])
     return (f'<a class="card rv scard" data-cat="{s["cat"]}" href="{{{{P}}}}poslugy/{s["slug"]}.html"{extra}><div class="frame">{media}</div>'
@@ -73,10 +74,13 @@ def service_page(s, i):
     name, cat = s['name'], next(n for c, n in CATS if c == s['cat'])
     from urllib.parse import quote
     book = f'{{{{P}}}}kontakty.html?service={quote(s["form"])}#zapys'
-    visual = (f'<img src="{{{{A}}}}assets/{"video/massage-2.webp" if s["slug"]=="masazh" else "img/"+s["img"]+".webp"}" alt="" width="900" height="1125" decoding="async" fetchpriority="high">'
+    visual = (f'<img src="{{{{A}}}}assets/{"video/massage-2.webp" if s["slug"]=="masazh" else "img/"+s["img"]+".webp"}" alt="{B(name)}" width="900" height="1125" decoding="async" fetchpriority="high">'
               if s['img'] else f'<div class="pvis">{svg(s["icon"], "pvis-ico")}<span class="pvis-l">[ФОТО]</span></div>')
-    out = [head((f'{name[0]} в Одесі — Potapova Cosmetology', f'{name[1]} в Одессе — Potapova Cosmetology'), s['lead'],
-                '<script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"' + B(name, q="'") + '","provider":{"@type":"Organization","name":"Potapova Cosmetology"},"areaServed":"Одеса"}</script>\n')]
+    st, sd, stext = SERVICE_SEO[s['slug']]
+    ld = (service_ld(name, sd, B, s['price'] if s.get('price_rows') else None)
+          + crumbs_ld([(UI['home'], 'index.html'), (UI['services'], 'poslugy/index.html'), (name, f'poslugy/{s["slug"]}.html')], B)
+          + faq_ld(s['faq'], B))
+    out = [head(st, sd, ld)]
     out.append(f'<main id="main">\n<section class="phero dark"><div class="wrap phero-grid"><div>'
                f'<nav class="crumbs" aria-label="Breadcrumb"><a href="{{{{P}}}}index.html">{B(UI["home"])}</a><span>/</span><a href="{{{{P}}}}poslugy/index.html">{B(UI["services"])}</a><span>/</span>{B(cat)}</nav>'
                f'<h1>{B(name)}</h1><p class="lead">{B(s["lead"])}</p>'
@@ -113,6 +117,9 @@ def service_page(s, i):
     faq = ''.join(f'<details><summary>{B(q)}</summary><p>{fill(a)}</p></details>' for q, a in s['faq'])
     out.append(f'<section class="section"><div class="wrap"><div class="eyebrow"><b>06</b> FAQ</div><h2 style="margin-bottom:40px">{B(UI["faq"])}</h2><div class="faq">{faq}</div>'
                + (f'<p style="margin-top:32px"><a class="link" href="{{{{P}}}}zhurnal/{s["article"]}.html">{B(UI["article"])}</a></p>' if s.get('article') else '') + '</div></section>')
+    # текст про послугу в Одесі (пошукові фрази)
+    out.append(f'<section class="section"><div class="wrap" style="max-width:860px"><div class="eyebrow"><b>07</b> {B((f"{name[0]} в Одесі", f"{name[1]} в Одессе"))}</div>'
+               f'<h2>{B((f"{name[0]} в Одесі: Potapova Cosmetology", f"{name[1]} в Одессе: Potapova Cosmetology"))}</h2><p class="lead" style="max-width:none">{B(stext)}</p></div></section>')
     # схожі
     others = [SERVICES[(i + k) % len(SERVICES)] for k in (1, 2, 3)]
     out.append(f'<section class="section sand"><div class="wrap"><div class="head"><div><h2>{B(UI["related"])}</h2></div><a class="link" href="{{{{P}}}}poslugy/index.html">{B(UI["all_services"])}</a></div><div class="grid3">{"".join(card(o) for o in others)}</div></div></section>')
@@ -124,7 +131,7 @@ def catalog():
     chips = f'<button class="chip is-on" type="button" data-filter="all">{B(UI["all_"])}</button>' + ''.join(
         f'<button class="chip" type="button" data-filter="{c}">{B(n)}</button>' for c, n in CATS)
     cards = ''.join(card(s, f' style="--i:{i % 3}"') for i, s in enumerate(SERVICES))
-    return (head((f'Послуги — Potapova Cosmetology, Одеса', f'Услуги — Potapova Cosmetology, Одесса'), UI['cat_p']) +
+    return (head(PAGE_SEO['poslugy/index.html'][0], PAGE_SEO['poslugy/index.html'][1], crumbs_ld([(UI['home'], 'index.html'), (UI['services'], 'poslugy/index.html')], B)) +
             f'<main id="main">\n<section class="phero dark phero-text"><div class="wrap"><nav class="crumbs" aria-label="Breadcrumb"><a href="{{{{P}}}}index.html">{B(UI["home"])}</a><span>/</span>{B(UI["services"])}</nav>'
             f'<h1>{B(UI["cat_h"])}</h1><p class="lead">{B(UI["cat_p"])}</p></div></section>'
             f'<section class="section"><div class="wrap"><div class="chips" role="group" aria-label="Filter">{chips}</div><div class="grid3 filterable">{cards}</div></div></section>'
@@ -145,7 +152,7 @@ def prices_page():
             else:
                 rows += f'<div class="prow"><div class="prow-h">{link}</div><b>{price_text(s)}</b></div>'
         blocks += f'<details class="pcat" open><summary>{B(cn)}</summary>{rows}</details>'
-    return (head((f'Ціни — Potapova Cosmetology, Одеса', f'Цены — Potapova Cosmetology, Одесса'), UI['pr_p']) +
+    return (head(PAGE_SEO['tsiny.html'][0], PAGE_SEO['tsiny.html'][1], crumbs_ld([(UI['home'], 'index.html'), (UI['prices'], 'tsiny.html')], B)) +
             f'<main id="main">\n<section class="phero dark phero-text"><div class="wrap"><nav class="crumbs" aria-label="Breadcrumb"><a href="{{{{P}}}}index.html">{B(UI["home"])}</a><span>/</span>{B(UI["prices"])}</nav>'
             f'<h1>{B(UI["pr_h"])}</h1><p class="lead">{fill(UI["pr_p"])}</p></div></section>'
             f'<section class="section"><div class="wrap" style="max-width:900px">{blocks}<p class="disc" style="text-align:left;margin-top:32px">{B(DISCLAIMER)}</p></div></section>'

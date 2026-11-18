@@ -37,6 +37,8 @@ SOURCES.update(gen_static())
 GEN_PARTIALS = gen_partials()
 PAGES = sorted(SOURCES)
 NOINDEX = {'404.html'}
+import datetime
+TODAY = datetime.date.today().isoformat()
 
 # ---------- включення ----------
 def include(html, depth=0):
@@ -172,10 +174,12 @@ def build_page(rel, lang):
         html = translate_html(html, rel)
     html = restore(html)
     html = (html.replace('{{A}}', A).replace('{{P}}', P).replace('{{LANG_UK}}', lang_uk).replace('{{LANG_RU}}', lang_ru)
-                .replace('{{DOMAIN}}', DOMAIN_OR_PLACEHOLDER).replace('{{LANG_CUR}}', 'УКР' if lang == 'uk' else 'РУС'))
+                .replace('{{DOMAIN}}', DOMAIN_OR_PLACEHOLDER).replace('{{LANG_CUR}}', 'УКР' if lang == 'uk' else 'РУС').replace('{{URLP}}', '' if lang == 'uk' else 'ru/'))
     html = bust(html)
     html = re.sub(r'<html lang="\w+"', f'<html lang="{lang}"', html, count=1)
     # посилання логотипа/«головна» у ru залишаються відносними (index.html), тож додаткових правок не потрібно
+    if site.get('googleVerification') and rel not in NOINDEX:
+        html = html.replace('</head>', f'<meta name="google-site-verification" content="{site["googleVerification"]}">\n</head>', 1)
     if not DOMAIN and rel not in NOINDEX:   # поки домену немає, не даємо пошуковикам індексувати github.io-адресу
         html = html.replace('</head>', '<meta name="robots" content="noindex, nofollow">\n</head>', 1)
     if rel not in NOINDEX:
@@ -205,7 +209,7 @@ def main():
                 continue
             u = lambda l: f'{DOMAIN}/' + ('' if l == 'uk' else 'ru/') + ('' if rel == 'index.html' else rel)
             for lang in ('uk', 'ru'):
-                urls.append(f'  <url><loc>{u(lang)}</loc>'
+                urls.append(f'  <url><loc>{u(lang)}</loc><lastmod>{TODAY}</lastmod>'
                             f'<xhtml:link rel="alternate" hreflang="uk" href="{u("uk")}"/><xhtml:link rel="alternate" hreflang="ru" href="{u("ru")}"/></url>')
         open('sitemap.xml', 'w', encoding='utf-8', newline='\n').write(
             '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n' + '\n'.join(urls) + '\n</urlset>\n')
