@@ -13,7 +13,6 @@ window.SITE = {
     email: '',            // 'info@domain.com'
     telegram: 'potapova_anastaisha',         // нік БЕЗ @: 'potapova_cosmetology'   (профіль або бот)
     whatsapp: '+380953231032',         // номер: '+380XXXXXXXXX'
-    viber: '',            // номер: '+380XXXXXXXXX'
     instagram: 'potapova.cosmetology',   // нік БЕЗ @, для DM відкривається ig.me
     facebook: '',         // повне посилання на сторінку
     tiktok: '',           // повне посилання
@@ -26,7 +25,7 @@ window.SITE = {
   },
 
   /* Порядок каналів у плаваючій кнопці «Написати» */
-  chatOrder: ['telegram', 'whatsapp', 'viber', 'instagram', 'phone'],
+  chatOrder: ['telegram', 'whatsapp', 'instagram', 'phone'],
 
   /* Тексти-заготовки для WhatsApp (підставляються у повідомлення автоматично) */
   messages: {
