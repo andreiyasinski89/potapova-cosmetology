@@ -7,6 +7,7 @@
   var LANG = (document.documentElement.lang || 'uk').slice(0, 2);
   var T = function (uk, ru) { return LANG === 'ru' ? ru : uk; };
   var digits = function (v) { return String(v || '').replace(/\D/g, ''); };
+  var pretty = function (v) { var d = digits(v); return /^380\d{9}$/.test(d) ? '+380 ' + d.slice(3, 5) + ' ' + d.slice(5, 8) + ' ' + d.slice(8, 10) + ' ' + d.slice(10) : String(v || ''); };
   var handle = function (v) { return String(v || '').trim().replace(/^@/, '').replace(/^https?:\/\/(t\.me|instagram\.com)\//, '').replace(/\/$/, ''); };
 
   function message(extra) {
@@ -46,7 +47,7 @@
     a.href = href; a.hidden = false;
     if (/^https?:/.test(href) && ch !== 'map') { a.target = '_blank'; a.rel = 'noopener noreferrer'; }
     var t = a.getAttribute('data-contact-text');
-    if (t === 'phone') a.textContent = C.phone;
+    if (t === 'phone') a.textContent = pretty(C.phone);
     else if (t === 'email') a.textContent = C.email;
     else if (t === 'address') a.textContent = (LANG === 'ru' && C.addressRu) || C.address || '';
   });

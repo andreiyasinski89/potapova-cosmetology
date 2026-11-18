@@ -9,10 +9,10 @@ window.SITE = {
 
   /* ---------- Контакти й чати ---------- */
   contacts: {
-    phone: '',            // міжнародний формат: '+380XXXXXXXXX'
+    phone: '+380953231032',            // міжнародний формат: '+380XXXXXXXXX'
     email: '',            // 'info@domain.com'
     telegram: 'potapova_anastaisha',         // нік БЕЗ @: 'potapova_cosmetology'   (профіль або бот)
-    whatsapp: '',         // номер: '+380XXXXXXXXX'
+    whatsapp: '+380953231032',         // номер: '+380XXXXXXXXX'
     viber: '',            // номер: '+380XXXXXXXXX'
     instagram: 'potapova.cosmetology',   // нік БЕЗ @, для DM відкривається ig.me
     facebook: '',         // повне посилання на сторінку
