@@ -11,7 +11,7 @@ window.SITE = {
   contacts: {
     phone: '',            // міжнародний формат: '+380XXXXXXXXX'
     email: '',            // 'info@domain.com'
-    telegram: '',         // нік БЕЗ @: 'potapova_cosmetology'   (профіль або бот)
+    telegram: 'potapova_anastaisha',         // нік БЕЗ @: 'potapova_cosmetology'   (профіль або бот)
     whatsapp: '',         // номер: '+380XXXXXXXXX'
     viber: '',            // номер: '+380XXXXXXXXX'
     instagram: 'potapova.cosmetology',   // нік БЕЗ @, для DM відкривається ig.me
