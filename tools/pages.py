@@ -1,6 +1,6 @@
 """Генератор сторінок послуг, каталогу та цін з tools/content.py.
 Усі тексти двомовні: <span class="l-uk">…</span><span class="l-ru">…</span>, build.py залишає потрібну мову."""
-from content import SERVICES, CATS, DISCLAIMER, P, GOOGLE
+from content import SERVICES, CATS, DISCLAIMER, P, GOOGLE, GOOGLE_REVIEWS, REVIEWS_PAGE_SIZE
 
 ICONS = {
  'face':  '<circle cx="17" cy="17" r="10"/><path d="M12 19c2 3 8 3 10 0M13 14h.01M21 14h.01"/>',
@@ -182,8 +182,9 @@ def gen_partials():
 def google_card():
     g = GOOGLE
     t = lambda uk, ru: B((uk, ru))
-    return (f'<div class="gcard rv"><div class="g-main"><span class="g-logo">Google</span><b class="g-num">{g["rating"]}</b><span class="g-stars" role="img" aria-label="{g["rating"]} / 5">★★★★★</span>'
-            f'<small>{B((f"{g["count"]} відгуків", f"{g["count"]} отзывов"))}</small></div>'
+    return (f'<div class="gcard rv"><div class="g-main"><span class="g-logo">Google</span><div class="g-row"><b class="g-num">{g["rating"]}</b>'
+            f'<div class="g-meta"><span class="g-stars" role="img" aria-label="{g["rating"]} / 5">★★★★★</span>'
+            f'<small>{B((f"{g['count']} відгуків", f"{g['count']} отзывов"))}</small></div></div></div>'
             f'<div class="actions" style="margin-top:0"><a class="btn btn-primary" href="{g["reviews_url"]}" target="_blank" rel="noopener noreferrer" data-ga-event="click_google_reviews">{t("Читати відгуки на Google", "Читать отзывы на Google")}</a>'
             f'<a class="btn btn-ghost" href="{g["write_url"]}" target="_blank" rel="noopener noreferrer" data-ga-event="click_google_write">{t("Залишити відгук на Google", "Оставить отзыв на Google")}</a></div>'
             f'<p class="disc" style="text-align:left;margin:0">{B((f"Рейтинг за даними Google Maps, {g["asof"][0]}. Відгуки пишуть клієнти на Google, ми їх не редагуємо.", f"Рейтинг по данным Google Maps, {g["asof"][1]}. Отзывы пишут клиенты на Google, мы их не редактируем."))}</p></div>')
@@ -192,3 +193,21 @@ def google_strip():
     g = GOOGLE
     return (f'<section class="gstrip"><div class="wrap"><a href="{{{{P}}}}vidhuky.html" class="gstrip-a"><span class="g-stars" aria-hidden="true">★★★★★</span><b>{g["rating"]}</b>'
             f'<span>{B((f"на Google · {g["count"]} відгуків", f"на Google · {g["count"]} отзывов"))}</span><span class="gstrip-go">{B(("Відгуки", "Отзывы"))} →</span></a></div></section>')
+
+
+def google_reviews():
+    """Відгуки Google: перші REVIEWS_PAGE_SIZE видно, решта за кнопкою «Далі»; коли ховати нічого, кнопка веде на всі відгуки в Google."""
+    g = GOOGLE
+    cards = ''
+    for i, r in enumerate(GOOGLE_REVIEWS):
+        hid = ' hidden data-more' if i >= REVIEWS_PAGE_SIZE else ''
+        tail = '…' if r.get('trunc') else ''
+        more = (f'<a class="rmore" href="{g["reviews_url"]}" target="_blank" rel="noopener noreferrer">{B(("Читати повністю на Google", "Читать полностью на Google"))}</a>') if r.get('trunc') else ''
+        cards += (f'<figure class="review-card"{hid}><div class="stars" role="img" aria-label="{r["rating"]} / 5">{"★" * r["rating"]}</div>'
+                  f'<blockquote lang="ru">«{r["text"]}{tail}»</blockquote>{more}'
+                  f'<figcaption><span class="ini">{r["name"][0]}</span><span><span>{r["name"]}</span><span>Google · {B(r["when"])}</span></span></figcaption></figure>')
+    hidden_n = max(0, len(GOOGLE_REVIEWS) - REVIEWS_PAGE_SIZE)
+    nxt = (f'<button class="btn btn-ghost" type="button" data-more-btn data-step="{REVIEWS_PAGE_SIZE}"{"" if hidden_n else " hidden"}>{B(("Далі", "Далее"))}</button>'
+           f'<a class="btn btn-ghost" data-more-link href="{g["reviews_url"]}" target="_blank" rel="noopener noreferrer" data-ga-event="click_google_reviews"{" hidden" if hidden_n else ""}>{B((f"Далі: усі {g["count"]} відгуків на Google →", f"Далее: все {g["count"]} отзывов на Google →"))}</a>')
+    return (f'<div class="rev-grid" data-more-list>{cards}</div><div class="actions rev-next">{nxt}</div>'
+            f'<p class="disc" style="text-align:left">{B(("Відгуки наведені з Google в оригіналі (мовою авторів). Ми їх не редагуємо.", "Отзывы приведены из Google в оригинале (на языке авторов). Мы их не редактируем."))}</p>')

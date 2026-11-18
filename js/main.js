@@ -77,6 +77,18 @@
     if (h && $(`.chip[data-filter="${h}"]`, box)) apply(h); else apply('all');
   });
 
+  /* ---------- «Далі»: показати ще відгуки; коли більше нічого, кнопка веде на всі відгуки в Google ---------- */
+  $$('[data-more-list]').forEach(list => {
+    const wrap = list.parentElement, btn = $('[data-more-btn]', wrap), link = $('[data-more-link]', wrap);
+    if (!btn) return;
+    const step = parseInt(btn.dataset.step, 10) || 5;
+    const left = () => $$('[data-more][hidden]', list);
+    btn.addEventListener('click', () => {
+      left().slice(0, step).forEach(c => { c.hidden = false; });
+      if (!left().length) { btn.hidden = true; if (link) link.hidden = false; }
+    });
+  });
+
   /* ---------- слайдер «до/після» ---------- */
   $$('.ba').forEach(ba => {
     const r = $('input', ba), set = () => ba.style.setProperty('--pos', r.value + '%');

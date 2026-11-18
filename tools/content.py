@@ -196,3 +196,17 @@ GOOGLE = dict(
 GOOGLE['reviews_url'] = 'https://search.google.com/local/reviews?placeid=' + GOOGLE['placeid']
 GOOGLE['write_url'] = 'https://search.google.com/local/writereview?placeid=' + GOOGLE['placeid']
 GOOGLE['map_url'] = 'https://www.google.com/maps/place/?q=place_id:' + GOOGLE['placeid']
+
+
+# Відгуки з Google: тексти (повністю, як у Google). Без входу в акаунт Google віддає лише 3 обрізані фрагменти
+# (trunc=True: на сайті з «…» і посиланням «читати повністю на Google»).
+# Щоб додати повні відгуки: скопіюйте їх з Google Business Profile → «Відгуки» і додайте сюди ще елементи.
+GOOGLE_REVIEWS = [
+    dict(name='Екатерина Ю.', when=('листопад 2026', 'ноябрь 2026'), rating=5, trunc=True,
+         text='Сегодня колола губы впервые в жизни у мастера Анастасии. Было очень много страхов и переживаний, но процедура прошла комфортно и безболезненно вообще. Я'),
+    dict(name='Александра Т.', when=('жовтень 2026', 'октябрь 2026'), rating=5, trunc=True,
+         text='Хочу выразить огромную благодарность косметологу Виктории! Процедура чистки и пилинга прошла замечательно, атмосфера была очень комфортной. Виктория ответила на'),
+    dict(name='Аня Ч.', when=('липень 2026', 'июль 2026'), rating=5, trunc=True,
+         text='Хочу выразить огромную благодарность косметологу Анастасии за потрясающую процедуру DMK! ❤️'),
+]
+REVIEWS_PAGE_SIZE = 5

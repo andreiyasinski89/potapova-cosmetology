@@ -100,6 +100,8 @@ def tr(text, page):
     lead = re.match(r'\s*', text).group(0); trail = re.search(r'\s*$', text).group(0)
     if n in RU:
         return lead + RU[n] + trail
+    if n.startswith('«') and n.endswith('»'):   # цитата-оригінал (відгуки Google мовою автора)
+        return text
     if '[' in n:                       # плейсхолдери [ЗАПОВНИТИ ...]
         out = n
         for a, b in PH:
@@ -144,6 +146,17 @@ def translate_html(html, page):
     return ''.join(out)
 
 # ---------- збірка ----------
+import hashlib
+_HASH = {}
+def bust(html):
+    """css/js?v=<хеш вмісту>: після кожної зміни файлу браузери й телефони беруть свіжу версію."""
+    def rep(m):
+        path = m.group(2)
+        if path not in _HASH:
+            _HASH[path] = hashlib.md5(open(path, 'rb').read()).hexdigest()[:8] if os.path.exists(path) else '0'
+        return f'{m.group(1)}{m.group(2)}?v={_HASH[path]}"'
+    return re.sub(r'((?:href|src)=")(?:\.\./)*((?:css|js)/[A-Za-z0-9_.-]+\.(?:css|js))"', lambda m: (m.group(1) + m.group(0)[len(m.group(1)):].split('"')[0] + f'?v=' + _HASH.setdefault(m.group(2), hashlib.md5(open(m.group(2), 'rb').read()).hexdigest()[:8]) + '"'), html)
+
 def build_page(rel, lang):
     html = include(SOURCES[rel])
     html = re.sub(r'<!--(?!#).*?-->', '', html, flags=re.S)
@@ -160,6 +173,7 @@ def build_page(rel, lang):
     html = restore(html)
     html = (html.replace('{{A}}', A).replace('{{P}}', P).replace('{{LANG_UK}}', lang_uk).replace('{{LANG_RU}}', lang_ru)
                 .replace('{{DOMAIN}}', DOMAIN_OR_PLACEHOLDER))
+    html = bust(html)
     html = re.sub(r'<html lang="\w+"', f'<html lang="{lang}"', html, count=1)
     # посилання логотипа/«головна» у ru залишаються відносними (index.html), тож додаткових правок не потрібно
     if not DOMAIN and rel not in NOINDEX:   # поки домену немає, не даємо пошуковикам індексувати github.io-адресу

@@ -15,7 +15,7 @@
     return { short: p.length > 1 ? first + ' ' + p[1].charAt(0).toUpperCase() + '.' : first, ini: (first.charAt(0) + (p[1] ? p[1].charAt(0) : '')).toUpperCase() };
   }
   function card(r) {
-    var f = tpl.cloneNode(true), n = Math.max(1, Math.min(5, Math.round(Number(r.rating) || 5)));
+    var f = tpl.cloneNode(true); f.hidden = false; var n = Math.max(1, Math.min(5, Math.round(Number(r.rating) || 5)));
     f.querySelector('.stars').textContent = '★★★★★'.slice(0, n) + '☆☆☆☆☆'.slice(0, 5 - n);
     f.querySelector('.stars').setAttribute('aria-label', n + ' / 5');
     var q = f.querySelector('blockquote'); q.className = ''; q.textContent = '«' + String(r.text) + '»'; if (r.lang) q.setAttribute('lang', r.lang);
@@ -27,6 +27,7 @@
     var list = (d && Array.isArray(d.reviews) ? d.reviews : []).filter(function (r) { return r && String(r.text || '').trim().length >= 10 && String(r.name || '').trim(); });
     if (!list.length) return;
     list.sort(function (a, b) { return (b.lang === LANG) - (a.lang === LANG); });
+    var sec = track.closest('[data-site-reviews]'); if (sec) sec.hidden = false;
     track.innerHTML = ''; list.slice(0, MAX).forEach(function (r) { track.appendChild(card(r)); });
   }
   try { var c = JSON.parse(sessionStorage.getItem(CACHE)); if (c && Date.now() - c.t < TTL) { use(c.d); return; } } catch (e) {}

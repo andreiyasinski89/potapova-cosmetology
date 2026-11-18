@@ -283,3 +283,21 @@ header.site .wrap{gap:20px}
 .gfoot b{font:400 1.3rem/1 var(--font-serif)}
 .gfoot:hover{color:#fff;text-decoration:underline}
 @media(max-width:640px){.gcard{flex-direction:column;align-items:flex-start}.gcard .actions{width:100%}.gstrip-a{justify-content:flex-start}}
+
+.rmore{font-size:var(--fs-small);color:var(--accent);border-bottom:1px solid currentColor;align-self:flex-start;padding-bottom:2px}
+.rev-next{justify-content:center;margin:40px 0 8px}
+.review-card[hidden]{display:none}
+
+/* картка рейтингу: акуратно на будь-якому екрані */
+.gcard .g-main{display:flex;flex-direction:column;align-items:flex-start;gap:6px}
+.g-row{display:flex;align-items:center;gap:18px}
+.g-meta{display:flex;flex-direction:column;gap:4px}
+.gcard .g-stars{font-size:1.5rem;line-height:1}
+.gcard small{flex-basis:auto;font-size:.95rem}
+.gcard .actions{flex:0 0 auto}
+@media(max-width:640px){
+  .gcard{gap:20px;padding:24px}
+  .gcard .actions{display:grid;grid-template-columns:1fr;width:100%;gap:10px}
+  .gcard .actions .btn{width:100%;justify-content:center}
+  .g-num{font-size:3.4rem}
+}
