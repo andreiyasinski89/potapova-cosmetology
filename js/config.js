@@ -19,6 +19,7 @@ window.SITE = {
     tiktok: '',           // повне посилання
     address: 'вул. Академіка Філатова, 2А, ЖК «Манхеттен», Одеса',
     addressRu: 'ул. Академика Филатова, 2А, ЖК «Манхэттен», Одесса',
+    mapEmbed: 'https://maps.google.com/maps?q=46.4313051,30.7265503(Potapova%20Cosmetology)&z=17&hl=uk&output=embed',   // карта на сторінці «Контакти»; координати з Google Maps
     mapUrl: 'https://www.google.com/maps/place/?q=place_id:ChIJv6nXS2QzxkAR7weqnZd8A8g',           // посилання «Прокласти маршрут» (Google Maps share link)
     hours: ''             // 'Пн–Сб 10:00–20:00'
   },

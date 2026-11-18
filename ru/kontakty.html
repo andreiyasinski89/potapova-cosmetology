@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="../css/styles.css?v=6899c409">
 <link rel="stylesheet" href="../css/media.css?v=9bf9b158">
 <link rel="stylesheet" href="../css/connect.css?v=b4d21380">
-<link rel="stylesheet" href="../css/pages.css?v=22980a49">
+<link rel="stylesheet" href="../css/pages.css?v=84323152">
 <link rel="icon" href="../assets/favicon.ico?v=2" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png?v=2">
 <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16.png?v=2">
@@ -116,7 +116,14 @@
 
     <p class="lead" style="margin-top:40px">Адрес: ул. Академика Филатова, 2А, ЖК «Манхэттен», Одесса<br>Часы: <span class="fill" data-fill="hours">[ЧАСЫ РАБОТЫ]</span></p>
     <a class="btn btn-ghost" data-contact="map" href="#" style="margin-top:16px" hidden>Проложить маршрут</a>
-    <div class="mapbox" data-map><p>[ЗАПОЛНИТЬ: вставьте ссылку на карту в js/config.js, поле mapEmbed]</p></div>
+    <div class="mapbox" data-map>
+      <div class="map-ph">
+        <svg viewBox="0 0 34 34" aria-hidden="true"><path d="M17 30s9-8.2 9-15a9 9 0 0 0-18 0c0 6.8 9 15 9 15z"/><circle cx="17" cy="15" r="3.5"/></svg>
+        <p class="map-addr">ул. Академика Филатова, 2А, ЖК «Манхэттен», Одесса</p>
+        <button class="btn btn-primary" type="button" data-map-load>Показать карту</button>
+        <small>Карту загрузит Google. Нажимая кнопку, вы соглашаетесь на загрузку его содержимого.</small>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -200,8 +207,8 @@
 <button class="totop" type="button" aria-label="Наверх" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
 <nav class="mbar" aria-label="Быстрое действие"><a class="p" href="kontakty.html#zapys" data-ga-event="click_book">Записаться</a><button type="button" data-chat-open>Написать</button></nav>
 
-<script src="../js/config.js?v=e6808a4e"></script>
-<script src="../js/main.js?v=a0ad4964"></script>
+<script src="../js/config.js?v=1c86219e"></script>
+<script src="../js/main.js?v=36e8264f"></script>
 <script src="../js/contacts.js?v=d7a31288"></script>
 <script src="../js/forms.js?v=ff0422e1"></script>
 <script src="../js/reviews.js?v=f714e6a9"></script>

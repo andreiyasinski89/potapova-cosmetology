@@ -100,6 +100,23 @@
     });
   });
 
+  /* ---------- карта Google: вантажиться лише після кліку (приватність і швидкість) ---------- */
+  $$('[data-map]').forEach(box => {
+    const btn = $('[data-map-load]', box);
+    if (!btn) return;
+    btn.addEventListener('click', () => {
+      const cfg = (window.SITE && window.SITE.contacts) || {};
+      if (!cfg.mapEmbed) return;
+      const lang = (root.lang || 'uk').slice(0, 2);
+      const f = document.createElement('iframe');
+      f.src = cfg.mapEmbed.replace(/hl=\w+/, 'hl=' + lang);
+      f.title = lang === 'ru' ? 'Карта: Potapova Cosmetology' : 'Карта: Potapova Cosmetology';
+      f.loading = 'lazy'; f.referrerPolicy = 'no-referrer-when-downgrade'; f.allowFullscreen = true;
+      box.innerHTML = ''; box.classList.add('is-loaded'); box.appendChild(f);
+      if (window.siteTrack) window.siteTrack('map_load', {});
+    });
+  });
+
   /* ---------- слайдер «до/після» ---------- */
   $$('.ba').forEach(ba => {
     const r = $('input', ba), set = () => ba.style.setProperty('--pos', r.value + '%');
